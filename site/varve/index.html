@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varve: Database manager</title>
+<meta name="description" content="One desktop app for PostgreSQL, MySQL, MariaDB and Redis, careful around production: environment tags, read-only connections and a plan to review before every change.">
+<link rel="canonical" href="https://sherin.dev/varve/">
+<meta property="og:title" content="Varve: Database manager">
+<meta property="og:description" content="One desktop app for PostgreSQL, MySQL, MariaDB and Redis, careful around production: environment tags, read-only connections and a plan to review before every change.">
+<meta property="og:url" content="https://sherin.dev/varve/">
+<meta name="theme-color" content="#f7f9fa">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
+  <a class="corner" href="https://github.com/getvarve/varve">Varve on GitHub</a>
+</header>
+<main id="main">
+<section class="hero app column" aria-labelledby="title">
+  <div class="app-head rise" style="--i:0"><img src="/assets/icons/varve.png" alt="Varve icon" width="72" height="72"></div>
+  <h1 id="title" class="rise" style="--i:1">Varve: calm database work.</h1>
+  <p class="lead rise" style="--i:2">One desktop app for PostgreSQL, MySQL, MariaDB and Redis, careful around production: environment tags, read-only connections and a plan to review before every change.</p>
+  <div class="actions rise" style="--i:3">
+    <a class="button" href="#downloads">See the downloads</a>
+    <a class="textlink" href="https://varve.app">varve.app <span aria-hidden="true">→</span></a> <a class="textlink" href="https://github.com/getvarve/varve">Source on GitHub <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+  
+  <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/varve/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <div class="command" data-command="windows"><pre><code>powershell -c &quot;irm https://sherin.dev/varve/install.ps1|iex&quot;</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <p class="note">macOS and Linux above, Windows below.</p>
+</div>
+  <figure class="figure rise">
+  <img src="/assets/art/varve-banner-light.svg" alt="Varve: a calm desktop manager for PostgreSQL, MySQL, MariaDB and Redis" width="1200" height="600" loading="lazy">
+</figure>
+</section>
+
+<section class="section column" aria-labelledby="points-title">
+  <h2 id="points-title" class="rise">What it does</h2>
+  <ul class="points rise">
+    <li><strong>Every engine, fully.</strong> Materialized views, partitions, events, system-versioned tables and Redis streams, each in its own place.</li>
+    <li><strong>Safe around production.</strong> Environment tags, read-only connections, a plan before every structure change and a confirmation before destructive statements.</li>
+    <li><strong>Quiet by design.</strong> A dense, calm interface where colour only means something: production is red, and nothing else is.</li>
+    <li><strong>Secrets stay local.</strong> Passwords and SSH passphrases live in your system keychain; your queries only travel to your own servers.</li>
+    <li><strong>Fast where it counts.</strong> A Rust core with native drivers, cancellable queries and a grid that stays smooth on large results.</li>
+  </ul>
+</section>
+
+<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="rise">Downloads</h2>
+  <div class="group rise">
+    <p>Latest release <span data-version="getvarve/varve" hidden></span></p>
+    <ul>
+      <li><span>Mac, Apple Silicon</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-arm64.dmg">varve-macos-arm64.dmg</a></li>
+      <li><span>Mac, Intel</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-x64.dmg">varve-macos-x64.dmg</a></li>
+      <li><span>Windows installer</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64-setup.exe">varve-windows-x64-setup.exe</a></li>
+      <li><span>Windows, for administrators</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64.msi">varve-windows-x64.msi</a></li>
+      <li><span>Linux x64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.AppImage">varve-linux-x64.AppImage</a></li>
+      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.deb">varve-linux-x64.deb</a></li>
+      <li><span>Linux arm64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.AppImage">varve-linux-arm64.AppImage</a></li>
+      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.deb">varve-linux-arm64.deb</a></li>
+    </ul>
+  </div>
+</section>
+<section class="section column" aria-labelledby="facts-title">
+  <h2 id="facts-title" class="rise">Details</h2>
+  <dl class="facts rise">
+    <dt>Runs on</dt><dd>macOS, Windows and Linux</dd>
+    <dt>Linux needs</dt><dd>glibc 2.35 or newer (Ubuntu 22.04, Debian 12, Fedora 36)</dd>
+    <dt>Written in</dt><dd>Rust, with a Vue interface</dd>
+    <dt>Licence</dt><dd>Apache-2.0 for Varve Community</dd>
+    <dt>Source</dt><dd><a href="https://github.com/getvarve/varve">github.com/getvarve/varve</a></dd>
+  </dl>
+</section>
+</main>
+<footer class="footer">
+  <p>Apps by Sherin Bloemendaal</p>
+  <nav aria-label="Apps">
+    <a href="/tagwell/">Tagwell</a>
+    <a href="/moire/">Moire</a>
+    <a href="/varve/">Varve</a>
+    <a href="/chatkeep/">Chatkeep</a>
+    <a href="/shellops/">ShellOps</a>
+    <a href="/tresso/">Tresso</a>
+    <a href="/webra/">WebRA</a>
+    <a href="https://github.com/SherinBloemendaal">GitHub</a>
+  </nav>
+  <p class="end">2026 · No cookies, no tracking</p>
+</footer>
+</body>
+</html>

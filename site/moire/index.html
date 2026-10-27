@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moire: Compare text, files and folders</title>
+<meta name="description" content="A native Mac app for comparing text, files and folders. Lines line up across both sides, and the exact words that changed are marked.">
+<link rel="canonical" href="https://sherin.dev/moire/">
+<meta property="og:title" content="Moire: Compare text, files and folders">
+<meta property="og:description" content="A native Mac app for comparing text, files and folders. Lines line up across both sides, and the exact words that changed are marked.">
+<meta property="og:url" content="https://sherin.dev/moire/">
+<meta name="theme-color" content="#f7f9fa">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
+  <a class="corner" href="https://github.com/SherinBloemendaal/moire">Moire on GitHub</a>
+</header>
+<main id="main">
+<section class="hero app column" aria-labelledby="title">
+  <div class="app-head rise" style="--i:0"><img src="/assets/icons/moire.png" alt="Moire icon" width="72" height="72"></div>
+  <h1 id="title" class="rise" style="--i:1">Moire shows what changed.</h1>
+  <p class="lead rise" style="--i:2">A native Mac app for comparing text, files and folders. Lines line up across both sides, and the exact words that changed are marked.</p>
+  <div class="actions rise" style="--i:3">
+    <a class="button" href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.dmg">Download for Mac</a>
+    <a class="textlink" href="https://github.com/SherinBloemendaal/moire">Source on GitHub <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+  
+  <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/moire/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  
+  <p class="note">Installs Moire.app for macOS 15 or later.</p>
+</div>
+  <figure class="figure rise">
+  <img src="/assets/art/moire-preview-light.svg" alt="Moire comparing two versions of a Swift file side by side, with the changed words marked" width="1200" height="600" loading="lazy">
+</figure>
+</section>
+
+<section class="section column" aria-labelledby="points-title">
+  <h2 id="points-title" class="rise">What it does</h2>
+  <ul class="points rise">
+    <li><strong>Side by side or unified.</strong> Changed lines sit next to their new version, with the changed words marked.</li>
+    <li><strong>Copy changes across.</strong> Take a change from either side; saving keeps the file&#x27;s own encoding and line endings.</li>
+    <li><strong>Jump between changes</strong> with the keyboard, or click a mark in the change map beside the scroll bar.</li>
+    <li><strong>Paste or type.</strong> No files needed: paste two snippets and the comparison updates as you type.</li>
+    <li><strong>Compare folders.</strong> Every file in both folders is compared by its contents; double-click one to see what changed.</li>
+    <li><strong>Fast on big files.</strong> Myers&#x27; algorithm in linear space, the idea behind git diff, off the main thread.</li>
+  </ul>
+</section>
+
+<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="rise">Downloads</h2>
+  <div class="group rise">
+    <p>Latest release <span data-version="SherinBloemendaal/moire" hidden></span></p>
+    <ul>
+      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.dmg">Moire.dmg</a></li>
+      <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.zip">Moire.zip</a></li>
+      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
+    </ul>
+  </div>
+</section>
+<section class="section column" aria-labelledby="facts-title">
+  <h2 id="facts-title" class="rise">Details</h2>
+  <dl class="facts rise">
+    <dt>Needs</dt><dd>macOS 15 or later</dd>
+    <dt>Runs on</dt><dd>Apple Silicon and Intel</dd>
+    <dt>Written in</dt><dd>Swift and SwiftUI</dd>
+    <dt>Licence</dt><dd>MIT</dd>
+    <dt>Source</dt><dd><a href="https://github.com/SherinBloemendaal/moire">github.com/SherinBloemendaal/moire</a></dd>
+  </dl>
+</section>
+</main>
+<footer class="footer">
+  <p>Apps by Sherin Bloemendaal</p>
+  <nav aria-label="Apps">
+    <a href="/tagwell/">Tagwell</a>
+    <a href="/moire/">Moire</a>
+    <a href="/varve/">Varve</a>
+    <a href="/chatkeep/">Chatkeep</a>
+    <a href="/shellops/">ShellOps</a>
+    <a href="/tresso/">Tresso</a>
+    <a href="/webra/">WebRA</a>
+    <a href="https://github.com/SherinBloemendaal">GitHub</a>
+  </nav>
+  <p class="end">2026 · No cookies, no tracking</p>
+</footer>
+</body>
+</html>

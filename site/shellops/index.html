@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShellOps: Docker Compose and PHP from the shell</title>
+<meta name="description" content="so finds the project&#x27;s git root, loads its .env, and turns Docker Compose, PHP tooling, database resets and releases into one short command each.">
+<link rel="canonical" href="https://sherin.dev/shellops/">
+<meta property="og:title" content="ShellOps: Docker Compose and PHP from the shell">
+<meta property="og:description" content="so finds the project&#x27;s git root, loads its .env, and turns Docker Compose, PHP tooling, database resets and releases into one short command each.">
+<meta property="og:url" content="https://sherin.dev/shellops/">
+<meta name="theme-color" content="#f7f9fa">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
+  <a class="corner" href="https://github.com/SherinBloemendaal/shellops-cli">ShellOps on GitHub</a>
+</header>
+<main id="main">
+<section class="hero app column" aria-labelledby="title">
+  <div class="app-head rise" style="--i:0"><img src="/assets/icons/shellops.png" alt="ShellOps icon" width="72" height="72"></div>
+  <h1 id="title" class="rise" style="--i:1">ShellOps: Compose from the shell.</h1>
+  <p class="lead rise" style="--i:2">so finds the project&#x27;s git root, loads its .env, and turns Docker Compose, PHP tooling, database resets and releases into one short command each.</p>
+  <div class="actions rise" style="--i:3">
+    <a class="button" href="https://github.com/SherinBloemendaal/shellops-cli">Source on GitHub</a>
+    
+  </div>
+  
+  <p class="unreleased rise" style="--i:4">The first release is not published yet. The install command appears here as soon as it is.</p>
+  <figure class="figure rise">
+  <img src="/assets/art/shellops-how-it-works-light.svg" alt="so reads compose.yml, .env and Dockerfiles at the git root, then runs Docker, PHP tooling, database, cache, release and alias commands" width="1200" height="600" loading="lazy">
+</figure>
+</section>
+
+<section class="section column" aria-labelledby="points-title">
+  <h2 id="points-title" class="rise">What it does</h2>
+  <ul class="points rise">
+    <li><strong>Knows your project.</strong> It finds the git root, loads .env, and picks dev or prod from APP_ENV.</li>
+    <li><strong>One short command per chore.</strong> Compose, image builds, PHP tooling, database resets and caches.</li>
+    <li><strong>Guarded releases.</strong> so release requires HEAD to match origin, pushes branch and tag together, and drafts the release notes.</li>
+    <li><strong>Signed aliases.</strong> Shared shortcuts are signed with your SSH key and only run for others once they trust them.</li>
+    <li><strong>Verified updates.</strong> so update checks SHA256SUMS before it replaces the binary.</li>
+  </ul>
+</section>
+
+<section class="section column" aria-labelledby="facts-title">
+  <h2 id="facts-title" class="rise">Details</h2>
+  <dl class="facts rise">
+    <dt>Runs on</dt><dd>macOS and Linux</dd>
+    <dt>For</dt><dd>projects with a compose.yml at the git root</dd>
+    <dt>Written in</dt><dd>Rust</dd>
+    <dt>Status</dt><dd>Not released yet</dd>
+    <dt>Source</dt><dd><a href="https://github.com/SherinBloemendaal/shellops-cli">github.com/SherinBloemendaal/shellops-cli</a></dd>
+  </dl>
+</section>
+</main>
+<footer class="footer">
+  <p>Apps by Sherin Bloemendaal</p>
+  <nav aria-label="Apps">
+    <a href="/tagwell/">Tagwell</a>
+    <a href="/moire/">Moire</a>
+    <a href="/varve/">Varve</a>
+    <a href="/chatkeep/">Chatkeep</a>
+    <a href="/shellops/">ShellOps</a>
+    <a href="/tresso/">Tresso</a>
+    <a href="/webra/">WebRA</a>
+    <a href="https://github.com/SherinBloemendaal">GitHub</a>
+  </nav>
+  <p class="end">2026 · No cookies, no tracking</p>
+</footer>
+</body>
+</html>

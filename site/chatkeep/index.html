@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatkeep: Keeps AI chats with moved projects</title>
+<meta name="description" content="A command-line tool for Cursor and Claude Code. Move or rename a project folder, and its chat history comes along to the new place.">
+<link rel="canonical" href="https://sherin.dev/chatkeep/">
+<meta property="og:title" content="Chatkeep: Keeps AI chats with moved projects">
+<meta property="og:description" content="A command-line tool for Cursor and Claude Code. Move or rename a project folder, and its chat history comes along to the new place.">
+<meta property="og:url" content="https://sherin.dev/chatkeep/">
+<meta name="theme-color" content="#f7f9fa">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
+  <a class="corner" href="https://github.com/SherinBloemendaal/chatkeep">Chatkeep on GitHub</a>
+</header>
+<main id="main">
+<section class="hero app column" aria-labelledby="title">
+  <div class="app-head rise" style="--i:0"><img src="/assets/icons/chatkeep.png" alt="Chatkeep icon" width="72" height="72"></div>
+  <h1 id="title" class="rise" style="--i:1">Chatkeep: your chats move along.</h1>
+  <p class="lead rise" style="--i:2">A command-line tool for Cursor and Claude Code. Move or rename a project folder, and its chat history comes along to the new place.</p>
+  <div class="actions rise" style="--i:3">
+    <a class="button" href="#install">Install</a>
+    <a class="textlink" href="https://github.com/SherinBloemendaal/chatkeep">Source on GitHub <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+  
+  <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/chatkeep/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <div class="command" data-command="windows"><pre><code>powershell -c &quot;irm https://sherin.dev/chatkeep/install.ps1|iex&quot;</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <p class="note">macOS and Linux above, Windows below.</p>
+</div>
+  <figure class="figure rise">
+  <img src="/assets/art/chatkeep-how-it-works-light.svg" alt="chatkeep mv rewrites the local references of Cursor and Claude Code so chats follow a moved folder" width="1200" height="600" loading="lazy">
+</figure>
+</section>
+
+<section class="section column" aria-labelledby="points-title">
+  <h2 id="points-title" class="rise">What it does</h2>
+  <ul class="points rise">
+    <li><strong>Chats follow the folder.</strong> chatkeep mv rewrites the local references, so the history reattaches at the new path.</li>
+    <li><strong>One command, both tools.</strong> List, move, copy, split, combine, export and import chats for Cursor and Claude Code alike.</li>
+    <li><strong>Safe writes.</strong> It refuses while the tool still uses the chats, keeps an undo journal, and -n previews first.</li>
+    <li><strong>Queue for later.</strong> A command that has to wait goes into a queue that runs once the tool is closed.</li>
+    <li><strong>Local only.</strong> It never contacts the servers of Cursor or Anthropic.</li>
+  </ul>
+</section>
+
+<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="rise">Downloads</h2>
+  <div class="group rise">
+    <p>Latest release <span data-version="SherinBloemendaal/chatkeep" hidden></span></p>
+    <ul>
+      <li><span>Mac, Apple Silicon</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-apple-darwin.tar.gz">chatkeep-aarch64-apple-darwin.tar.gz</a></li>
+      <li><span>Mac, Intel</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-apple-darwin.tar.gz">chatkeep-x86_64-apple-darwin.tar.gz</a></li>
+      <li><span>Linux x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-unknown-linux-gnu.tar.gz">chatkeep-x86_64-unknown-linux-gnu.tar.gz</a></li>
+      <li><span>Linux arm64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-unknown-linux-gnu.tar.gz">chatkeep-aarch64-unknown-linux-gnu.tar.gz</a></li>
+      <li><span>Windows x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-pc-windows-msvc.zip">chatkeep-x86_64-pc-windows-msvc.zip</a></li>
+    </ul>
+  </div>
+</section>
+<section class="section column" aria-labelledby="facts-title">
+  <h2 id="facts-title" class="rise">Details</h2>
+  <dl class="facts rise">
+    <dt>Runs on</dt><dd>macOS, Linux and Windows</dd>
+    <dt>Works with</dt><dd>Cursor and Claude Code</dd>
+    <dt>Written in</dt><dd>Rust</dd>
+    <dt>Licence</dt><dd>MIT</dd>
+    <dt>Source</dt><dd><a href="https://github.com/SherinBloemendaal/chatkeep">github.com/SherinBloemendaal/chatkeep</a></dd>
+  </dl>
+</section>
+</main>
+<footer class="footer">
+  <p>Apps by Sherin Bloemendaal</p>
+  <nav aria-label="Apps">
+    <a href="/tagwell/">Tagwell</a>
+    <a href="/moire/">Moire</a>
+    <a href="/varve/">Varve</a>
+    <a href="/chatkeep/">Chatkeep</a>
+    <a href="/shellops/">ShellOps</a>
+    <a href="/tresso/">Tresso</a>
+    <a href="/webra/">WebRA</a>
+    <a href="https://github.com/SherinBloemendaal">GitHub</a>
+  </nav>
+  <p class="end">2026 · No cookies, no tracking</p>
+</footer>
+</body>
+</html>

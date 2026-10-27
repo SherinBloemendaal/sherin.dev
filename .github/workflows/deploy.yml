@@ -24,8 +24,9 @@ jobs:
 
       - name: The pages match scripts/build.py
         run: |
+          cp -R site "$RUNNER_TEMP/committed"
           python3 scripts/build.py
-          git diff --exit-status -- site || { echo "::error::site/ is out of date: run python3 scripts/build.py and commit the result"; exit 1; }
+          diff -r "$RUNNER_TEMP/committed" site || { echo "::error::site/ is out of date: run python3 scripts/build.py and commit the result"; exit 1; }
 
       - name: Deploy to Cloudflare Pages
         if: github.event_name != 'pull_request'

@@ -195,8 +195,8 @@ APPS = [
         "title": "Tresso: do, hand over or know.",
         "lead": "An email client built around one idea: every email is something to do, to hand over, "
         "or to know. Open source and self-hostable, for the web, the desktop and your phone.",
-        "primary": ("Source on GitHub", "https://github.com/gettresso/tresso"),
-        "unreleased": "Tresso is in development and has no release yet. The source is open on GitHub.",
+        "primary": ("See the downloads", "#downloads"),
+        "install": "tresso",
         "points": [
             ("Do.", "The email becomes a todo, linked to it, with a due date when there is one. Complete the todo and the email archives itself."),
             ("Hand over.", "It goes to someone else with a note and a due date, and waits in Waiting on until they finish it."),
@@ -205,11 +205,22 @@ APPS = [
             ("Triage mode.", "One email at a time, settled with D, H or K."),
             ("Everywhere.", "Web, desktop and mobile, with notifications only for mail that needs you."),
         ],
+        "downloads": [
+            ("Mac, Apple Silicon and Intel", "tresso-macos-universal.dmg", release("gettresso/tresso", "tresso-macos-universal.dmg")),
+            ("Windows installer", "tresso-windows-x64-setup.exe", release("gettresso/tresso", "tresso-windows-x64-setup.exe")),
+            ("Windows, for administrators", "tresso-windows-x64.msi", release("gettresso/tresso", "tresso-windows-x64.msi")),
+            ("Linux x64, AppImage", "tresso-linux-x86_64.AppImage", release("gettresso/tresso", "tresso-linux-x86_64.AppImage")),
+            ("Linux x64, Debian and Ubuntu", "tresso-linux-x86_64.deb", release("gettresso/tresso", "tresso-linux-x86_64.deb")),
+            ("Linux arm64, AppImage", "tresso-linux-aarch64.AppImage", release("gettresso/tresso", "tresso-linux-aarch64.AppImage")),
+            ("Linux arm64, Debian and Ubuntu", "tresso-linux-aarch64.deb", release("gettresso/tresso", "tresso-linux-aarch64.deb")),
+            ("Checksums", "SHA256SUMS", release("gettresso/tresso", "SHA256SUMS")),
+        ],
         "facts": [
             ("Runs on", "Web, desktop (Tauri) and mobile (Expo)"),
+            ("Desktop app for", "macOS, Windows and Linux"),
             ("Hosting", "Self-hostable with Docker"),
             ("Licence", "AGPL-3.0"),
-            ("Status", "In development"),
+            ("Status", "Early: the first releases are out, the mobile app is not yet"),
         ],
     },
     {
@@ -237,18 +248,20 @@ APPS = [
     },
 ]
 
-INSTALL_APPS = ["tagwell", "moire", "varve", "chatkeep"]
+INSTALL_APPS = ["tagwell", "moire", "varve", "chatkeep", "tresso"]
 INSTALL_COMMANDS = {
     "tagwell": ("curl -fsSL https://sherin.dev/tagwell/install.sh | bash", None),
     "moire": ("curl -fsSL https://sherin.dev/moire/install.sh | bash", None),
     "varve": ("curl -fsSL https://sherin.dev/varve/install.sh | bash", 'powershell -c "irm https://sherin.dev/varve/install.ps1|iex"'),
     "chatkeep": ("curl -fsSL https://sherin.dev/chatkeep/install.sh | bash", 'powershell -c "irm https://sherin.dev/chatkeep/install.ps1|iex"'),
+    "tresso": ("curl -fsSL https://sherin.dev/tresso/install.sh | bash", 'powershell -c "irm https://sherin.dev/tresso/install.ps1|iex"'),
 }
 INSTALL_NOTES = {
     "tagwell": 'Installs Tagwell.app for macOS 15 or later. <a href="/tagwell/">About Tagwell</a>',
     "moire": 'Installs Moire.app for macOS 15 or later. <a href="/moire/">About Moire</a>',
     "varve": 'macOS and Linux above, Windows below. <a href="/varve/">About Varve</a>',
     "chatkeep": 'macOS and Linux above, Windows below. <a href="/chatkeep/">About Chatkeep</a>',
+    "tresso": 'The desktop app: macOS and Linux above, Windows below. <a href="/tresso/">About Tresso</a>',
 }
 
 MARK = (

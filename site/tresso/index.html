@@ -28,11 +28,15 @@
   <h1 id="title" class="rise" style="--i:1">Tresso: do, hand over or know.</h1>
   <p class="lead rise" style="--i:2">An email client built around one idea: every email is something to do, to hand over, or to know. Open source and self-hostable, for the web, the desktop and your phone.</p>
   <div class="actions rise" style="--i:3">
-    <a class="button" href="https://github.com/gettresso/tresso">Source on GitHub</a>
-    
+    <a class="button" href="#downloads">See the downloads</a>
+    <a class="textlink" href="https://github.com/gettresso/tresso">Source on GitHub <span aria-hidden="true">→</span></a>
   </div>
+  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
   
-  <p class="unreleased rise" style="--i:4">Tresso is in development and has no release yet. The source is open on GitHub.</p>
+  <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/tresso/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <div class="command" data-command="windows"><pre><code>powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <p class="note">The desktop app: macOS and Linux above, Windows below.</p>
+</div>
   
 </section>
 
@@ -48,13 +52,30 @@
   </ul>
 </section>
 
+<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="rise">Downloads</h2>
+  <div class="group rise">
+    <p>Latest release <span data-version="gettresso/tresso" hidden></span></p>
+    <ul>
+      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-macos-universal.dmg">tresso-macos-universal.dmg</a></li>
+      <li><span>Windows installer</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64-setup.exe">tresso-windows-x64-setup.exe</a></li>
+      <li><span>Windows, for administrators</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64.msi">tresso-windows-x64.msi</a></li>
+      <li><span>Linux x64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.AppImage">tresso-linux-x86_64.AppImage</a></li>
+      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.deb">tresso-linux-x86_64.deb</a></li>
+      <li><span>Linux arm64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.AppImage">tresso-linux-aarch64.AppImage</a></li>
+      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.deb">tresso-linux-aarch64.deb</a></li>
+      <li><span>Checksums</span><a href="https://github.com/gettresso/tresso/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
+    </ul>
+  </div>
+</section>
 <section class="section column" aria-labelledby="facts-title">
   <h2 id="facts-title" class="rise">Details</h2>
   <dl class="facts rise">
     <dt>Runs on</dt><dd>Web, desktop (Tauri) and mobile (Expo)</dd>
+    <dt>Desktop app for</dt><dd>macOS, Windows and Linux</dd>
     <dt>Hosting</dt><dd>Self-hostable with Docker</dd>
     <dt>Licence</dt><dd>AGPL-3.0</dd>
-    <dt>Status</dt><dd>In development</dd>
+    <dt>Status</dt><dd>Early: the first releases are out, the mobile app is not yet</dd>
     <dt>Source</dt><dd><a href="https://github.com/gettresso/tresso">github.com/gettresso/tresso</a></dd>
   </dl>
 </section>

@@ -1,4 +1,4 @@
-// sherin.dev: the install instrument, copy buttons, latest release numbers and section entrances.
+// sherin.dev: the install tile, copy buttons, latest release numbers and tile entrances.
 // Every part is an enhancement: without this script the page shows the same content.
 
 document.documentElement.classList.add("js");
@@ -13,13 +13,20 @@ function setUpInstrument(root) {
   const windowsRow = root.querySelector("[data-command='windows']");
   const windows = windowsRow?.querySelector("pre");
   const note = root.querySelector(".note");
+  const stepList = root.querySelector(".steps");
   let current = buttons.find((b) => b.getAttribute("aria-pressed") === "true")?.dataset.app ?? "tagwell";
   let timer = null;
 
   function show(app, animate) {
     const button = buttons.find((b) => b.dataset.app === app);
     if (!button) return;
-    const install = { shell: button.dataset.shell, windows: button.dataset.windows, note: button.dataset.note };
+    const install = {
+      shell: button.dataset.shell,
+      windows: button.dataset.windows,
+      note: button.dataset.note,
+      steps: JSON.parse(button.dataset.steps ?? "[]"),
+    };
+    root.classList.replace(`c-${current}`, `c-${app}`);
     current = app;
     buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.app === app)));
     const apply = () => {
@@ -29,6 +36,17 @@ function setUpInstrument(root) {
         windows.textContent = install.windows ?? "";
       }
       note.innerHTML = install.note;
+      if (stepList) {
+        stepList.replaceChildren(
+          ...install.steps.map(([label, value]) => {
+            const item = document.createElement("li");
+            const name = document.createElement("span");
+            name.textContent = label;
+            item.append(name, value);
+            return item;
+          }),
+        );
+      }
       shell.classList.remove("fading");
       windows?.classList.remove("fading");
     };
@@ -82,34 +100,6 @@ document.querySelectorAll(".command .copy").forEach((button) => {
       button.textContent = "Select and copy";
     }
     setTimeout(() => (button.textContent = "Copy"), 1600);
-  });
-});
-
-// ---------- Ledger preview: the pointed-at app's own picture beside the list ----------
-
-document.querySelectorAll(".ledger").forEach((ledger) => {
-  const image = ledger.querySelector(".preview img");
-  if (!image) return;
-  let shown = image.getAttribute("src");
-  const showFor = (link) => {
-    const next = link.dataset.preview;
-    if (!next || next === shown) return;
-    shown = next;
-    const swap = () => {
-      image.src = next;
-      image.classList.toggle("icon", next.endsWith(".png"));
-      image.classList.remove("fading");
-    };
-    if (reducedMotion) {
-      swap();
-    } else {
-      image.classList.add("fading");
-      setTimeout(swap, 200);
-    }
-  };
-  ledger.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("pointerenter", () => showFor(link));
-    link.addEventListener("focus", () => showFor(link));
   });
 });
 

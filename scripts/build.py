@@ -5,6 +5,7 @@ The output (site/index.html, site/404.html and one folder per app) is committed,
 Run it after changing an app:  python3 scripts/build.py
 """
 
+import json
 from html import escape
 from pathlib import Path
 
@@ -256,6 +257,14 @@ INSTALL_COMMANDS = {
     "chatkeep": ("curl -fsSL https://sherin.dev/chatkeep/install.sh | bash", 'powershell -c "irm https://sherin.dev/chatkeep/install.ps1|iex"'),
     "tresso": ("curl -fsSL https://sherin.dev/tresso/install.sh | bash", 'powershell -c "irm https://sherin.dev/tresso/install.ps1|iex"'),
 }
+# What each installer prints on a Mac, step by step (see the app's install.sh).
+INSTALL_STEPS = {
+    "tagwell": [("Download", "Tagwell.zip"), ("Checksum", "SHA-256 matches SHA256SUMS"), ("Installed", "/Applications/Tagwell.app")],
+    "moire": [("Download", "Moire.zip"), ("Checksum", "SHA-256 matches SHA256SUMS"), ("Installed", "/Applications/Moire.app")],
+    "varve": [("Download", "varve-macos-arm64.app.tar.gz"), ("Checksum", "SHA-256 matches SHA256SUMS"), ("Installed", "/Applications/Varve Community.app")],
+    "chatkeep": [("Download", "chatkeep-aarch64-apple-darwin.tar.gz"), ("Checksum", "SHA-256 matches SHA256SUMS"), ("Installed", "~/.chatkeep/bin/chatkeep")],
+    "tresso": [("Download", "tresso-macos-universal.app.tar.gz"), ("Checksum", "SHA-256 matches SHA256SUMS"), ("Installed", "/Applications/Tresso.app")],
+}
 INSTALL_NOTES = {
     "tagwell": 'Installs Tagwell.app for macOS 15 or later. <a href="/tagwell/">About Tagwell</a>',
     "moire": 'Installs Moire.app for macOS 15 or later. <a href="/moire/">About Moire</a>',
@@ -264,18 +273,25 @@ INSTALL_NOTES = {
     "tresso": 'The desktop app: macOS and Linux above, Windows below. <a href="/tresso/">About Tresso</a>',
 }
 
-MARK = (
-    '<svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/>'
-    '<path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-    '<rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg>'
-)
+# Which languages each app is written in, and its licence, for the record tiles on the front page.
+WRITTEN_IN = [
+    ("Swift", ["Tagwell", "Moire"]),
+    ("Rust", ["Varve", "Chatkeep", "ShellOps", "WebRA"]),
+    ("TypeScript and Vue", ["Varve", "Tresso"]),
+    ("PHP and Go", ["Tresso"]),
+]
+LICENCES = [
+    ("MIT", ["Tagwell", "Moire", "Chatkeep"]),
+    ("Apache-2.0", ["Varve Community"]),
+    ("AGPL-3.0", ["Tresso"]),
+]
 
 
 def e(text: str) -> str:
     return escape(text, quote=True)
 
 
-def page(title: str, description: str, path: str, body: str, corner: tuple[str, str]) -> str:
+def page(title: str, description: str, path: str, body: str, theme: str = "#0b0c0e") -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -287,20 +303,15 @@ def page(title: str, description: str, path: str, body: str, corner: tuple[str, 
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="https://sherin.dev{path}">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="{theme}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
-  <div class="column"><a class="wordmark" href="/">{MARK}<span>sherin.dev</span></a></div>
-  <a class="corner" href="{e(corner[1])}">{e(corner[0])}</a>
-</header>
-<main id="main">
+<main id="main" class="board">
 {body}
 </main>
 {footer()}
@@ -309,15 +320,40 @@ def page(title: str, description: str, path: str, body: str, corner: tuple[str, 
 """
 
 
+def band(text: str, colour: str, label: str) -> str:
+    # The name is set wider than its tile, so both ends are cut off by the edges.
+    return f"""<header class="tile band {colour} rise" aria-label="{e(label)}">
+  <p aria-hidden="true">{e(text)}</p>
+</header>"""
+
+
+def nav(links: list[tuple[str, str]]) -> str:
+    items = "\n".join(f'  <a class="tile navlink rise" href="{e(href)}">{e(text)}</a>' for text, href in links)
+    return f'<nav class="navrow" aria-label="Site">\n{items}\n</nav>'
+
+
 def footer() -> str:
-    links = "\n    ".join(f'<a href="/{a["slug"]}/">{e(a["name"])}</a>' for a in APPS)
-    return f"""<footer class="footer">
-  <p>Apps by Sherin Bloemendaal</p>
-  <nav aria-label="Apps">
-    {links}
-    <a href="{GITHUB}">GitHub</a>
-  </nav>
-  <p class="end">{YEAR} · No cookies, no tracking</p>
+    # The closing wordmark: one block per letter, each in the colour of an app.
+    colours = [a["slug"] for a in APPS]
+    blocks = "".join(f'<span class="block c-{colours[i % len(colours)]} h{i % 3}">{ch}</span>' for i, ch in enumerate("SHERIN"))
+    apps = "\n      ".join(f'<li><a href="/{a["slug"]}/">{e(a["name"])}</a></li>' for a in APPS)
+    return f"""<footer class="board footer">
+  <a class="tile mark" href="/" aria-label="sherin.dev, all apps">{blocks}</a>
+  <div class="tile foot-apps">
+    <p class="small">The apps</p>
+    <ul>
+      {apps}
+    </ul>
+  </div>
+  <div class="tile foot-me">
+    <p class="small">Made by</p>
+    <p>Sherin Bloemendaal</p>
+    <p><a href="{GITHUB}">github.com/SherinBloemendaal</a></p>
+  </div>
+  <div class="tile foot-end">
+    <p class="small">{YEAR} · No cookies, no tracking</p>
+    <a class="button" href="#main">Back to the top</a>
+  </div>
 </footer>"""
 
 
@@ -325,7 +361,7 @@ def instrument(apps: list[str], selected: str, on_app_page: bool = False) -> str
     # The commands live on the buttons, so the script and the pages share one source.
     buttons = "".join(
         f'<button type="button" data-app="{a}" data-shell="{e(INSTALL_COMMANDS[a][0])}" data-windows="{e(INSTALL_COMMANDS[a][1] or "")}" '
-        f'data-note="{e(INSTALL_NOTES[a])}" aria-pressed="{str(a == selected).lower()}">{e(next(x["name"] for x in APPS if x["slug"] == a))}</button>'
+        f'data-note="{e(INSTALL_NOTES[a])}" data-steps="{e(json.dumps(INSTALL_STEPS[a]))}" aria-pressed="{str(a == selected).lower()}">{e(next(x["name"] for x in APPS if x["slug"] == a))}</button>'
         for a in apps
     )
     shell, windows = INSTALL_COMMANDS[selected]
@@ -336,197 +372,218 @@ def instrument(apps: list[str], selected: str, on_app_page: bool = False) -> str
         if any(INSTALL_COMMANDS[a][1] for a in apps)
         else ""
     )
-    return f"""<div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+    note = INSTALL_NOTES[selected].split(" <a ")[0] if on_app_page else INSTALL_NOTES[selected]
+    heading = "Install in one line" if not on_app_page else f"Install {next(x['name'] for x in APPS if x['slug'] == selected)}"
+    return f"""<section class="tile install c-{selected} rise" id="install" aria-labelledby="install-title" data-ui data-instrument>
+  <h2 id="install-title" class="small">{e(heading)}</h2>
   {picker}
   <div class="command" data-command="shell"><pre><code>{e(shell)}</code></pre><button class="copy" type="button" hidden>Copy</button></div>
   {windows_row}
-  <p class="note">{INSTALL_NOTES[selected].split(" <a ")[0] if on_app_page else INSTALL_NOTES[selected]}</p>
-</div>"""
+  <ol class="steps" aria-label="What the installer does on a Mac">
+{steps(selected)}
+  </ol>
+  <p class="note">{note}</p>
+</section>"""
 
 
-def picture(name: str, alt: str) -> str:
-    # The site is light only, so the README art is too.
-    return f"""<figure class="figure rise">
-  <img src="/assets/art/{name}-light.svg" alt="{e(alt)}" width="1200" height="600" loading="lazy">
+def steps(app: str) -> str:
+    return "\n".join(f'    <li><span>{e(k)}</span>{e(v)}</li>' for k, v in INSTALL_STEPS[app])
+
+
+def art(a: dict, cls: str) -> str:
+    # The README illustrations are drawn for a light page, so they sit on a light tile of their own.
+    return f"""<figure class="tile paper {cls} rise">
+  <img src="/assets/art/{a['art']}-light.svg" alt="{e(a['art_alt'])}" width="1200" height="600" loading="lazy">
 </figure>"""
 
 
-def preview(a: dict) -> str:
-    """The picture shown beside the app list: the app's own README art, or its icon when it has none."""
-    return f"/assets/art/{a['art']}-light.svg" if a.get("art") else f"/assets/icons/{a['slug']}.png"
+def version(a: dict) -> str:
+    return f'<span class="version" data-version="{a["repo"]}" hidden></span>' if a.get("repo") and a.get("downloads") else ""
+
+
+def app_tile(a: dict, size: str) -> str:
+    status = "Not released yet" if a.get("unreleased") else ("Plays in the browser" if a["slug"] == "webra" else "")
+    status_line = f'<span class="status">{e(status)}</span>' if status else version(a)
+    picture = (
+        f'<span class="peek"><img src="/assets/art/{a["art"]}-light.svg" alt="" width="1200" height="600" loading="lazy"></span>'
+        if a.get("art") and size in ("large", "tall")
+        else ""
+    )
+    return f"""<a class="tile app {size} c-{a['slug']} rise" href="/{a['slug']}/">
+  <img class="icon" src="/assets/icons/{a['slug']}.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">{e(a['name'])}</span>
+  <span class="kind">{e(a['kind'])}</span>
+  <span class="meta">{e(a['where'])} {status_line}</span>
+  {picture}
+</a>"""
+
+
+def downloads_list(apps: list[dict], open_first: bool = True) -> str:
+    bars = []
+    for i, a in enumerate(apps):
+        if a.get("downloads"):
+            rows = "\n".join(f'      <li><span>{e(label)}</span><a href="{e(url)}">{e(file)}</a></li>' for label, file, url in a["downloads"])
+        elif a["slug"] == "webra":
+            rows = '      <li><span>Plays in the browser</span><a href="https://webra.sherin.dev/">webra.sherin.dev</a></li>'
+        else:
+            rows = f'      <li><span>Not released yet</span><a href="https://github.com/{a["repo"]}">Source on GitHub</a></li>'
+        bars.append(
+            f"""  <details class="bar"{" open" if open_first and i == 0 else ""}>
+    <summary><img src="/assets/icons/{a['slug']}.png" alt="" width="24" height="24" loading="lazy"><span>{e(a['name'])}</span>{version(a)}</summary>
+    <ul>
+{rows}
+    </ul>
+  </details>"""
+        )
+    return "\n".join(bars)
+
+
+def record(title: str, rows: list[tuple[str, list[str]]], cls: str) -> str:
+    items = "\n".join(f"    <div><dt>{e(k)}</dt><dd>{e(', '.join(v))}</dd></div>" for k, v in rows)
+    return f"""<section class="tile record {cls} rise" aria-label="{e(title)}">
+  <p class="small">{e(title)}</p>
+  <dl>
+{items}
+  </dl>
+</section>"""
+
+
+def marquee(words: list[str], colour: str = "") -> str:
+    run = "".join(f"<span>{e(w)}</span>" for w in words)
+    return f"""<div class="tile marquee{f' one {colour}' if colour else ''}" aria-hidden="true">
+  <div class="track">{run}{run}</div>
+</div>"""
 
 
 def home() -> str:
-    ledger = "\n".join(
-        f"""    <li><a href="/{a['slug']}/" data-preview="{preview(a)}">
-      <span class="name"><img src="/assets/icons/{a['slug']}.png" alt="" width="28" height="28" loading="lazy">{e(a['name'])}</span>
-      <span class="kind">{e(a['kind'])}</span>
-      <span class="where">{e(a['where'])}</span>
-    </a></li>"""
-        for a in APPS
+    by_slug = {a["slug"]: a for a in APPS}
+    tiles = "\n".join(
+        app_tile(by_slug[slug], size)
+        for slug, size in [
+            ("tagwell", "large"),
+            ("moire", "tall"),
+            ("varve", "tall"),
+            ("chatkeep", "large"),
+            ("shellops", "tall"),
+            ("tresso", "tall"),
+            ("webra", "wide"),
+        ]
     )
+    body = f"""{band("Sherin Bloemendaal", "c-ink", "Sherin Bloemendaal")}
+{nav([("The apps", "#apps"), ("Install", "#install"), ("Downloads", "#downloads"), ("GitHub", GITHUB)])}
 
-    groups = []
-    for a in APPS:
-        icon = f'<img src="/assets/icons/{a["slug"]}.png" alt="" width="16" height="16" loading="lazy">'
-        version = f' <span data-version="{a["repo"]}" hidden></span>' if a.get("repo") and a.get("downloads") else ""
-        if a.get("downloads"):
-            rows = "\n".join(
-                f'      <li><span>{e(label)}</span><a href="{e(url)}">{e(file)}</a></li>' for label, file, url in a["downloads"][:4] if file != "SHA256SUMS"
-            )
-            more = (
-                f'\n      <li><span>Everything else</span><a href="/{a["slug"]}/#downloads">All downloads</a></li>'
-                if len([d for d in a["downloads"] if d[1] != "SHA256SUMS"]) > 4
-                else ""
-            )
-        elif a["slug"] == "webra":
-            rows = '      <li><span>Plays in the browser</span><a href="https://webra.sherin.dev/">webra.sherin.dev</a></li>'
-            more = ""
-        else:
-            rows = f'      <li><span>Not released yet</span><a href="https://github.com/{a["repo"]}">Source on GitHub</a></li>'
-            more = ""
-        groups.append(
-            f"""  <div class="group rise">
-    <p>{icon}<a href="/{a['slug']}/">{e(a['name'])}</a>{version}</p>
-    <ul>
-{rows}{more}
-    </ul>
-  </div>"""
-        )
-
-    body = f"""<section class="hero column" aria-labelledby="title">
-  <h1 id="title" class="rise" style="--i:0">Apps I build and use myself.</h1>
-  <p class="lead rise" style="--i:1">I'm Sherin Bloemendaal. These are my own apps: two for the Mac, a database manager, two command-line tools, an email client and a strategy game. Most install with one line.</p>
-  <div class="actions rise" style="--i:2">
-    <a class="button" href="#apps">See the apps</a>
-    <a class="textlink" href="{GITHUB}">GitHub <span aria-hidden="true">→</span></a>
-  </div>
-  {instrument(INSTALL_APPS, "tagwell")}
+<section class="tile statement rise" aria-labelledby="title">
+  <h1 id="title">Seven apps I build and use myself.</h1>
+  <p>Two Mac apps, a database manager, two command-line tools, an email client and a strategy game. Most of them are open source, and most install with one line.</p>
 </section>
+{instrument(INSTALL_APPS, "tagwell")}
 
-<section class="section column" id="apps" aria-labelledby="apps-title">
-  <h2 id="apps-title" class="rise">The apps</h2>
-  <ul class="ledger rise">
-{ledger}
-    <li class="preview" aria-hidden="true"><img src="{preview(APPS[0])}" alt="" width="480" height="240"></li>
-  </ul>
+<h2 class="sr-only" id="apps">The apps</h2>
+{tiles}
+
+{marquee([a["name"] for a in APPS])}
+
+<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="giant">Downloads</h2>
+{downloads_list(APPS)}
 </section>
-
-<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="rise">Downloads</h2>
-{chr(10).join(groups)}
-</section>
-
-<section class="section about" aria-label="About">
-  <dl class="rise">
-    <div><dt>Made by</dt><dd>Sherin Bloemendaal</dd></div>
-    <div><dt>Code</dt><dd><a href="{GITHUB}">github.com/SherinBloemendaal</a></dd></div>
-    <div><dt>Licences</dt><dd>MIT, Apache-2.0, AGPL-3.0</dd></div>
-  </dl>
-  <p class="statement rise">Each app here started as something I needed myself. They stay small on purpose and do one job well, and most of them are open source, so you can read exactly what an app does before you run it.</p>
-  <div class="record rise">
-    <div>
-      <p>Written in</p>
-      <ul>
-        <li><span>Tagwell, Moire</span><span>Swift</span></li>
-        <li><span>Varve, Chatkeep, ShellOps</span><span>Rust</span></li>
-        <li><span>Tresso</span><span>TypeScript, PHP, Go</span></li>
-        <li><span>WebRA</span><span>Rust, WebAssembly</span></li>
-      </ul>
-    </div>
-    <div>
-      <p>Licence</p>
-      <ul>
-        <li><span>Tagwell, Moire, Chatkeep</span><span>MIT</span></li>
-        <li><span>Varve Community</span><span>Apache-2.0</span></li>
-        <li><span>Tresso</span><span>AGPL-3.0</span></li>
-      </ul>
-    </div>
-  </div>
+{record("Written in", WRITTEN_IN, "written")}
+{record("Licence", LICENCES, "licence")}
+<section class="tile why rise" aria-label="Why these apps">
+  <p>Each app started as something I needed myself. They stay small on purpose, and most are open source, so you can read what an app does before you run it.</p>
 </section>"""
     return page(
         "Sherin Bloemendaal: apps",
         "Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso and WebRA, with downloads and one-line installs.",
         "/",
         body,
-        ("GitHub", GITHUB),
     )
 
 
 def app_page(a: dict) -> str:
     primary_label, primary_url = a["primary"]
-    links = []
-    if a.get("site"):
-        links.append(f'<a class="textlink" href="{e(a["site"])}">{e(a["site"].removeprefix("https://"))} <span aria-hidden="true">→</span></a>')
-    if a.get("repo") and primary_url != f"https://github.com/{a['repo']}":
-        links.append(f'<a class="textlink" href="https://github.com/{a["repo"]}">Source on GitHub <span aria-hidden="true">→</span></a>')
-
+    links = [("All apps", "/")]
     if a.get("install"):
-        demo = instrument([a["install"]], a["install"], on_app_page=True)
+        links.append(("Install", "#install"))
+    elif a["slug"] == "webra":
+        links.append(("Play", "https://webra.sherin.dev/"))
     else:
-        demo = ""
-    unreleased = f'\n  <p class="unreleased rise" style="--i:4">{e(a["unreleased"])}</p>' if a.get("unreleased") else ""
-    art = picture(a["art"], a["art_alt"]) if a.get("art") else ""
+        links.append(("What it does", "#points"))
+    links.append(("Downloads", "#downloads") if a.get("downloads") else ("Details", "#details"))
+    if a.get("site"):
+        links.append((a["site"].removeprefix("https://"), a["site"]))
+    elif a.get("repo"):
+        links.append(("GitHub", f"https://github.com/{a['repo']}"))
+    else:
+        links.append(("GitHub", GITHUB))
 
-    points = "\n".join(f"    <li><strong>{e(title)}</strong> {e(text)}</li>" for title, text in a["points"])
+    action = instrument([a["install"]], a["install"], on_app_page=True) if a.get("install") else ""
+    unreleased = f'<p class="unreleased">{e(a["unreleased"])}</p>' if a.get("unreleased") else ""
+    picture = art(a, "art") if a.get("art") else f'<div class="tile art-icon c-{a["slug"]} rise"><img src="/assets/icons/{a["slug"]}.png" alt="" width="256" height="256" loading="lazy"></div>'
+
+    points = "\n".join(
+        f"""<div class="tile point rise">
+  <p class="lead-line">{e(title)}</p>
+  <p>{e(text)}</p>
+</div>"""
+        for title, text in a["points"]
+    )
 
     downloads = ""
     if a.get("downloads"):
-        version = f' <span data-version="{a["repo"]}" hidden></span>' if a.get("repo") else ""
-        rows = "\n".join(f'      <li><span>{e(label)}</span><a href="{e(url)}">{e(file)}</a></li>' for label, file, url in a["downloads"])
-        downloads = f"""
-<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="rise">Downloads</h2>
-  <div class="group rise">
-    <p>Latest release{version}</p>
-    <ul>
+        rows = "\n".join(f'    <li><span>{e(label)}</span><a href="{e(url)}">{e(file)}</a></li>' for label, file, url in a["downloads"])
+        downloads = f"""<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="giant">Downloads</h2>
+  <p class="small">Latest release {version(a)}</p>
+  <ul class="files">
 {rows}
-    </ul>
-  </div>
-</section>"""
-
-    facts = "\n".join(f"    <dt>{e(k)}</dt><dd>{e(v)}</dd>" for k, v in a["facts"])
-    source = f'\n    <dt>Source</dt><dd><a href="https://github.com/{a["repo"]}">github.com/{a["repo"]}</a></dd>' if a.get("repo") else ""
-
-    body = f"""<section class="hero app column" aria-labelledby="title">
-  <div class="app-head rise" style="--i:0"><img src="/assets/icons/{a['slug']}.png" alt="{e(a['name'])} icon" width="72" height="72"></div>
-  <h1 id="title" class="rise" style="--i:1">{e(a['title'])}</h1>
-  <p class="lead rise" style="--i:2">{e(a['lead'])}</p>
-  <div class="actions rise" style="--i:3">
-    <a class="button" href="{e(primary_url)}">{e(primary_label)}</a>
-    {" ".join(links)}
-  </div>
-  {demo}{unreleased}
-  {art}
-</section>
-
-<section class="section column" aria-labelledby="points-title">
-  <h2 id="points-title" class="rise">What it does</h2>
-  <ul class="points rise">
-{points}
   </ul>
-</section>
-{downloads}
-<section class="section column" aria-labelledby="facts-title">
-  <h2 id="facts-title" class="rise">Details</h2>
-  <dl class="facts rise">
-{facts}{source}
-  </dl>
 </section>"""
-    corner = (f"{a['name']} on GitHub", f"https://github.com/{a['repo']}") if a.get("repo") else ("All apps", "/")
-    return page(f"{a['name']}: {a['kind']}", a["lead"], f"/{a['slug']}/", body, corner)
+
+    facts = list(a["facts"])
+    if a.get("repo"):
+        facts.append(("Source", f"github.com/{a['repo']}"))
+    fact_tiles = "\n".join(
+        f"""<div class="tile fact rise">
+  <p class="small">{e(k)}</p>
+  <p>{f'<a href="https://{e(v)}">{e(v)}</a>' if v.startswith("github.com/") else e(v)}</p>
+</div>"""
+        for k, v in facts
+    )
+
+    body = f"""{band(a["name"], f"c-{a['slug']}", a["name"])}
+{nav(links)}
+
+<section class="tile statement rise" aria-labelledby="title">
+  <img class="icon" src="/assets/icons/{a['slug']}.png" alt="{e(a['name'])} icon" width="128" height="128">
+  <h1 id="title">{e(a['title'])}</h1>
+  <p>{e(a['lead'])}</p>
+  <p class="actions"><a class="button c-{a['slug']}" href="{e(primary_url)}">{e(primary_label)}</a></p>
+  {unreleased}
+</section>
+{action}
+{picture}
+
+<h2 class="sr-only" id="points">What it does</h2>
+{points}
+
+{downloads}
+<h2 class="sr-only" id="details">Details</h2>
+{fact_tiles}
+
+{marquee([a["name"]] * 6, f"c-{a['slug']}")}"""
+    return page(f"{a['name']}: {a['kind']}", a["lead"], f"/{a['slug']}/", body)
 
 
 def not_found() -> str:
-    body = f"""<section class="hero column" aria-labelledby="title">
+    body = f"""{band("Not found", "c-ink", "Not found")}
+{nav([("All apps", "/"), ("Install", "/#install"), ("Downloads", "/#downloads"), ("GitHub", GITHUB)])}
+<section class="tile statement rise" aria-labelledby="title">
   <h1 id="title">This page does not exist.</h1>
-  <p class="lead">It may have moved. Every app is listed on the front page.</p>
-  <div class="actions">
-    <a class="button" href="/">All apps</a>
-    <a class="textlink" href="{GITHUB}">GitHub <span aria-hidden="true">→</span></a>
-  </div>
+  <p>It may have moved. Every app is on the front page.</p>
+  <p class="actions"><a class="button c-tagwell" href="/">All apps</a></p>
 </section>"""
-    return page("Not found: sherin.dev", "This page does not exist.", "/404", body, ("GitHub", GITHUB))
+    return page("Not found: sherin.dev", "This page does not exist.", "/404", body)
 
 
 def main() -> None:

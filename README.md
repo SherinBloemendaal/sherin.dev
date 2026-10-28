@@ -22,7 +22,7 @@ Commit the changed files in `site/`. A push to `main` deploys them; the workflow
 | `scripts/build.py` | Writes the pages in `site/`. |
 | `art/` | Drawings made for the site, as SVG: the ShellOps icon. |
 
-The app icons and illustrations in `site/assets` come from each app's own repository. The typeface is [Switzer](https://www.fontshare.com/fonts/switzer) by the Indian Type Foundry, served from this site.
+The app icons and illustrations in `site/assets` come from each app's own repository. The typeface is [Hanken Grotesk](https://fonts.google.com/specimen/Hanken+Grotesk) (SIL Open Font License), served from this site.
 
 ## Deploying
 

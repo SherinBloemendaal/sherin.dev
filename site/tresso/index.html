@@ -9,90 +9,139 @@
 <meta property="og:title" content="Tresso: Email client: do, hand over, know">
 <meta property="og:description" content="An email client built around one idea: every email is something to do, to hand over, or to know. Open source and self-hostable, for the web, the desktop and your phone.">
 <meta property="og:url" content="https://sherin.dev/tresso/">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="#0b0c0e">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
-  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
-  <a class="corner" href="https://github.com/gettresso/tresso">Tresso on GitHub</a>
+<main id="main" class="board">
+<header class="tile band c-tresso rise" aria-label="Tresso">
+  <p aria-hidden="true">Tresso</p>
 </header>
-<main id="main">
-<section class="hero app column" aria-labelledby="title">
-  <div class="app-head rise" style="--i:0"><img src="/assets/icons/tresso.png" alt="Tresso icon" width="72" height="72"></div>
-  <h1 id="title" class="rise" style="--i:1">Tresso: do, hand over or know.</h1>
-  <p class="lead rise" style="--i:2">An email client built around one idea: every email is something to do, to hand over, or to know. Open source and self-hostable, for the web, the desktop and your phone.</p>
-  <div class="actions rise" style="--i:3">
-    <a class="button" href="#downloads">See the downloads</a>
-    <a class="textlink" href="https://github.com/gettresso/tresso">Source on GitHub <span aria-hidden="true">→</span></a>
-  </div>
-  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+<nav class="navrow" aria-label="Site">
+  <a class="tile navlink rise" href="/">All apps</a>
+  <a class="tile navlink rise" href="#install">Install</a>
+  <a class="tile navlink rise" href="#downloads">Downloads</a>
+  <a class="tile navlink rise" href="https://github.com/gettresso/tresso">GitHub</a>
+</nav>
+
+<section class="tile statement rise" aria-labelledby="title">
+  <img class="icon" src="/assets/icons/tresso.png" alt="Tresso icon" width="128" height="128">
+  <h1 id="title">Tresso: do, hand over or know.</h1>
+  <p>An email client built around one idea: every email is something to do, to hand over, or to know. Open source and self-hostable, for the web, the desktop and your phone.</p>
+  <p class="actions"><a class="button c-tresso" href="#downloads">See the downloads</a></p>
+  
+</section>
+<section class="tile install c-tresso rise" id="install" aria-labelledby="install-title" data-ui data-instrument>
+  <h2 id="install-title" class="small">Install Tresso</h2>
   
   <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/tresso/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
   <div class="command" data-command="windows"><pre><code>powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;</code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <ol class="steps" aria-label="What the installer does on a Mac">
+    <li><span>Download</span>tresso-macos-universal.app.tar.gz</li>
+    <li><span>Checksum</span>SHA-256 matches SHA256SUMS</li>
+    <li><span>Installed</span>/Applications/Tresso.app</li>
+  </ol>
   <p class="note">The desktop app: macOS and Linux above, Windows below.</p>
-</div>
-  
 </section>
+<div class="tile art-icon c-tresso rise"><img src="/assets/icons/tresso.png" alt="" width="256" height="256" loading="lazy"></div>
 
-<section class="section column" aria-labelledby="points-title">
-  <h2 id="points-title" class="rise">What it does</h2>
-  <ul class="points rise">
-    <li><strong>Do.</strong> The email becomes a todo, linked to it, with a due date when there is one. Complete the todo and the email archives itself.</li>
-    <li><strong>Hand over.</strong> It goes to someone else with a note and a due date, and waits in Waiting on until they finish it.</li>
-    <li><strong>Know.</strong> It lands in the daily brief, cleared with one click on Noted.</li>
-    <li><strong>One inbox for every account,</strong> grouped into smart inboxes for todos, notifications, newsletters and invitations, plus your own.</li>
-    <li><strong>Triage mode.</strong> One email at a time, settled with D, H or K.</li>
-    <li><strong>Everywhere.</strong> Web, desktop and mobile, with notifications only for mail that needs you.</li>
+<h2 class="sr-only" id="points">What it does</h2>
+<div class="tile point rise">
+  <p class="lead-line">Do.</p>
+  <p>The email becomes a todo, linked to it, with a due date when there is one. Complete the todo and the email archives itself.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Hand over.</p>
+  <p>It goes to someone else with a note and a due date, and waits in Waiting on until they finish it.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Know.</p>
+  <p>It lands in the daily brief, cleared with one click on Noted.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">One inbox for every account,</p>
+  <p>grouped into smart inboxes for todos, notifications, newsletters and invitations, plus your own.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Triage mode.</p>
+  <p>One email at a time, settled with D, H or K.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Everywhere.</p>
+  <p>Web, desktop and mobile, with notifications only for mail that needs you.</p>
+</div>
+
+<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="giant">Downloads</h2>
+  <p class="small">Latest release <span class="version" data-version="gettresso/tresso" hidden></span></p>
+  <ul class="files">
+    <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-macos-universal.dmg">tresso-macos-universal.dmg</a></li>
+    <li><span>Windows installer</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64-setup.exe">tresso-windows-x64-setup.exe</a></li>
+    <li><span>Windows, for administrators</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64.msi">tresso-windows-x64.msi</a></li>
+    <li><span>Linux x64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.AppImage">tresso-linux-x86_64.AppImage</a></li>
+    <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.deb">tresso-linux-x86_64.deb</a></li>
+    <li><span>Linux arm64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.AppImage">tresso-linux-aarch64.AppImage</a></li>
+    <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.deb">tresso-linux-aarch64.deb</a></li>
+    <li><span>Checksums</span><a href="https://github.com/gettresso/tresso/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
   </ul>
 </section>
+<h2 class="sr-only" id="details">Details</h2>
+<div class="tile fact rise">
+  <p class="small">Runs on</p>
+  <p>Web, desktop (Tauri) and mobile (Expo)</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Desktop app for</p>
+  <p>macOS, Windows and Linux</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Hosting</p>
+  <p>Self-hostable with Docker</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Licence</p>
+  <p>AGPL-3.0</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Status</p>
+  <p>Early: the first releases are out, the mobile app is not yet</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Source</p>
+  <p><a href="https://github.com/gettresso/tresso">github.com/gettresso/tresso</a></p>
+</div>
 
-<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="rise">Downloads</h2>
-  <div class="group rise">
-    <p>Latest release <span data-version="gettresso/tresso" hidden></span></p>
+<div class="tile marquee one c-tresso" aria-hidden="true">
+  <div class="track"><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span><span>Tresso</span></div>
+</div>
+</main>
+<footer class="board footer">
+  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
+  <div class="tile foot-apps">
+    <p class="small">The apps</p>
     <ul>
-      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-macos-universal.dmg">tresso-macos-universal.dmg</a></li>
-      <li><span>Windows installer</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64-setup.exe">tresso-windows-x64-setup.exe</a></li>
-      <li><span>Windows, for administrators</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64.msi">tresso-windows-x64.msi</a></li>
-      <li><span>Linux x64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.AppImage">tresso-linux-x86_64.AppImage</a></li>
-      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.deb">tresso-linux-x86_64.deb</a></li>
-      <li><span>Linux arm64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.AppImage">tresso-linux-aarch64.AppImage</a></li>
-      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.deb">tresso-linux-aarch64.deb</a></li>
-      <li><span>Checksums</span><a href="https://github.com/gettresso/tresso/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
+      <li><a href="/tagwell/">Tagwell</a></li>
+      <li><a href="/moire/">Moire</a></li>
+      <li><a href="/varve/">Varve</a></li>
+      <li><a href="/chatkeep/">Chatkeep</a></li>
+      <li><a href="/shellops/">ShellOps</a></li>
+      <li><a href="/tresso/">Tresso</a></li>
+      <li><a href="/webra/">WebRA</a></li>
     </ul>
   </div>
-</section>
-<section class="section column" aria-labelledby="facts-title">
-  <h2 id="facts-title" class="rise">Details</h2>
-  <dl class="facts rise">
-    <dt>Runs on</dt><dd>Web, desktop (Tauri) and mobile (Expo)</dd>
-    <dt>Desktop app for</dt><dd>macOS, Windows and Linux</dd>
-    <dt>Hosting</dt><dd>Self-hostable with Docker</dd>
-    <dt>Licence</dt><dd>AGPL-3.0</dd>
-    <dt>Status</dt><dd>Early: the first releases are out, the mobile app is not yet</dd>
-    <dt>Source</dt><dd><a href="https://github.com/gettresso/tresso">github.com/gettresso/tresso</a></dd>
-  </dl>
-</section>
-</main>
-<footer class="footer">
-  <p>Apps by Sherin Bloemendaal</p>
-  <nav aria-label="Apps">
-    <a href="/tagwell/">Tagwell</a>
-    <a href="/moire/">Moire</a>
-    <a href="/varve/">Varve</a>
-    <a href="/chatkeep/">Chatkeep</a>
-    <a href="/shellops/">ShellOps</a>
-    <a href="/tresso/">Tresso</a>
-    <a href="/webra/">WebRA</a>
-    <a href="https://github.com/SherinBloemendaal">GitHub</a>
-  </nav>
-  <p class="end">2026 · No cookies, no tracking</p>
+  <div class="tile foot-me">
+    <p class="small">Made by</p>
+    <p>Sherin Bloemendaal</p>
+    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
+  </div>
+  <div class="tile foot-end">
+    <p class="small">2026 · No cookies, no tracking</p>
+    <a class="button" href="#main">Back to the top</a>
+  </div>
 </footer>
 </body>
 </html>

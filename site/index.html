@@ -9,178 +9,208 @@
 <meta property="og:title" content="Sherin Bloemendaal: apps">
 <meta property="og:description" content="Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso and WebRA, with downloads and one-line installs.">
 <meta property="og:url" content="https://sherin.dev/">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="#0b0c0e">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
-  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
-  <a class="corner" href="https://github.com/SherinBloemendaal">GitHub</a>
+<main id="main" class="board">
+<header class="tile band c-ink rise" aria-label="Sherin Bloemendaal">
+  <p aria-hidden="true">Sherin Bloemendaal</p>
 </header>
-<main id="main">
-<section class="hero column" aria-labelledby="title">
-  <h1 id="title" class="rise" style="--i:0">Apps I build and use myself.</h1>
-  <p class="lead rise" style="--i:1">I'm Sherin Bloemendaal. These are my own apps: two for the Mac, a database manager, two command-line tools, an email client and a strategy game. Most install with one line.</p>
-  <div class="actions rise" style="--i:2">
-    <a class="button" href="#apps">See the apps</a>
-    <a class="textlink" href="https://github.com/SherinBloemendaal">GitHub <span aria-hidden="true">→</span></a>
-  </div>
-  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
-  <div class="apps" role="group" aria-label="App to install"><button type="button" data-app="tagwell" data-shell="curl -fsSL https://sherin.dev/tagwell/install.sh | bash" data-windows="" data-note="Installs Tagwell.app for macOS 15 or later. &lt;a href=&quot;/tagwell/&quot;&gt;About Tagwell&lt;/a&gt;" aria-pressed="true">Tagwell</button><button type="button" data-app="moire" data-shell="curl -fsSL https://sherin.dev/moire/install.sh | bash" data-windows="" data-note="Installs Moire.app for macOS 15 or later. &lt;a href=&quot;/moire/&quot;&gt;About Moire&lt;/a&gt;" aria-pressed="false">Moire</button><button type="button" data-app="varve" data-shell="curl -fsSL https://sherin.dev/varve/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/varve/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/varve/&quot;&gt;About Varve&lt;/a&gt;" aria-pressed="false">Varve</button><button type="button" data-app="chatkeep" data-shell="curl -fsSL https://sherin.dev/chatkeep/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/chatkeep/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/chatkeep/&quot;&gt;About Chatkeep&lt;/a&gt;" aria-pressed="false">Chatkeep</button><button type="button" data-app="tresso" data-shell="curl -fsSL https://sherin.dev/tresso/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;" data-note="The desktop app: macOS and Linux above, Windows below. &lt;a href=&quot;/tresso/&quot;&gt;About Tresso&lt;/a&gt;" aria-pressed="false">Tresso</button></div>
+<nav class="navrow" aria-label="Site">
+  <a class="tile navlink rise" href="#apps">The apps</a>
+  <a class="tile navlink rise" href="#install">Install</a>
+  <a class="tile navlink rise" href="#downloads">Downloads</a>
+  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal">GitHub</a>
+</nav>
+
+<section class="tile statement rise" aria-labelledby="title">
+  <h1 id="title">Seven apps I build and use myself.</h1>
+  <p>Two Mac apps, a database manager, two command-line tools, an email client and a strategy game. Most of them are open source, and most install with one line.</p>
+</section>
+<section class="tile install c-tagwell rise" id="install" aria-labelledby="install-title" data-ui data-instrument>
+  <h2 id="install-title" class="small">Install in one line</h2>
+  <div class="apps" role="group" aria-label="App to install"><button type="button" data-app="tagwell" data-shell="curl -fsSL https://sherin.dev/tagwell/install.sh | bash" data-windows="" data-note="Installs Tagwell.app for macOS 15 or later. &lt;a href=&quot;/tagwell/&quot;&gt;About Tagwell&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;Tagwell.zip&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Tagwell.app&quot;]]" aria-pressed="true">Tagwell</button><button type="button" data-app="moire" data-shell="curl -fsSL https://sherin.dev/moire/install.sh | bash" data-windows="" data-note="Installs Moire.app for macOS 15 or later. &lt;a href=&quot;/moire/&quot;&gt;About Moire&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;Moire.zip&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Moire.app&quot;]]" aria-pressed="false">Moire</button><button type="button" data-app="varve" data-shell="curl -fsSL https://sherin.dev/varve/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/varve/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/varve/&quot;&gt;About Varve&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;varve-macos-arm64.app.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Varve Community.app&quot;]]" aria-pressed="false">Varve</button><button type="button" data-app="chatkeep" data-shell="curl -fsSL https://sherin.dev/chatkeep/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/chatkeep/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/chatkeep/&quot;&gt;About Chatkeep&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;chatkeep-aarch64-apple-darwin.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;~/.chatkeep/bin/chatkeep&quot;]]" aria-pressed="false">Chatkeep</button><button type="button" data-app="tresso" data-shell="curl -fsSL https://sherin.dev/tresso/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;" data-note="The desktop app: macOS and Linux above, Windows below. &lt;a href=&quot;/tresso/&quot;&gt;About Tresso&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;tresso-macos-universal.app.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Tresso.app&quot;]]" aria-pressed="false">Tresso</button></div>
   <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/tagwell/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
   <div class="command" data-command="windows" hidden><pre><code></code></pre><button class="copy" type="button" hidden>Copy</button></div>
+  <ol class="steps" aria-label="What the installer does on a Mac">
+    <li><span>Download</span>Tagwell.zip</li>
+    <li><span>Checksum</span>SHA-256 matches SHA256SUMS</li>
+    <li><span>Installed</span>/Applications/Tagwell.app</li>
+  </ol>
   <p class="note">Installs Tagwell.app for macOS 15 or later. <a href="/tagwell/">About Tagwell</a></p>
+</section>
+
+<h2 class="sr-only" id="apps">The apps</h2>
+<a class="tile app large c-tagwell rise" href="/tagwell/">
+  <img class="icon" src="/assets/icons/tagwell.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">Tagwell</span>
+  <span class="kind">MP3 tag editor</span>
+  <span class="meta">macOS <span class="version" data-version="SherinBloemendaal/tagwell" hidden></span></span>
+  <span class="peek"><img src="/assets/art/tagwell-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
+</a>
+<a class="tile app tall c-moire rise" href="/moire/">
+  <img class="icon" src="/assets/icons/moire.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">Moire</span>
+  <span class="kind">Compare text, files and folders</span>
+  <span class="meta">macOS <span class="version" data-version="SherinBloemendaal/moire" hidden></span></span>
+  <span class="peek"><img src="/assets/art/moire-preview-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
+</a>
+<a class="tile app tall c-varve rise" href="/varve/">
+  <img class="icon" src="/assets/icons/varve.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">Varve</span>
+  <span class="kind">Database manager</span>
+  <span class="meta">macOS, Windows, Linux <span class="version" data-version="getvarve/varve" hidden></span></span>
+  <span class="peek"><img src="/assets/art/varve-banner-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
+</a>
+<a class="tile app large c-chatkeep rise" href="/chatkeep/">
+  <img class="icon" src="/assets/icons/chatkeep.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">Chatkeep</span>
+  <span class="kind">Keeps AI chats with moved projects</span>
+  <span class="meta">Command line <span class="version" data-version="SherinBloemendaal/chatkeep" hidden></span></span>
+  <span class="peek"><img src="/assets/art/chatkeep-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
+</a>
+<a class="tile app tall c-shellops rise" href="/shellops/">
+  <img class="icon" src="/assets/icons/shellops.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">ShellOps</span>
+  <span class="kind">Docker Compose and PHP from the shell</span>
+  <span class="meta">Command line <span class="status">Not released yet</span></span>
+  <span class="peek"><img src="/assets/art/shellops-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
+</a>
+<a class="tile app tall c-tresso rise" href="/tresso/">
+  <img class="icon" src="/assets/icons/tresso.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">Tresso</span>
+  <span class="kind">Email client: do, hand over, know</span>
+  <span class="meta">Web, desktop, mobile <span class="version" data-version="gettresso/tresso" hidden></span></span>
+  
+</a>
+<a class="tile app wide c-webra rise" href="/webra/">
+  <img class="icon" src="/assets/icons/webra.png" alt="" width="128" height="128" loading="lazy">
+  <span class="name">WebRA</span>
+  <span class="kind">Real-time strategy in the browser</span>
+  <span class="meta">Browser <span class="status">Plays in the browser</span></span>
+  
+</a>
+
+<div class="tile marquee" aria-hidden="true">
+  <div class="track"><span>Tagwell</span><span>Moire</span><span>Varve</span><span>Chatkeep</span><span>ShellOps</span><span>Tresso</span><span>WebRA</span><span>Tagwell</span><span>Moire</span><span>Varve</span><span>Chatkeep</span><span>ShellOps</span><span>Tresso</span><span>WebRA</span></div>
 </div>
-</section>
 
-<section class="section column" id="apps" aria-labelledby="apps-title">
-  <h2 id="apps-title" class="rise">The apps</h2>
-  <ul class="ledger rise">
-    <li><a href="/tagwell/" data-preview="/assets/art/tagwell-how-it-works-light.svg">
-      <span class="name"><img src="/assets/icons/tagwell.png" alt="" width="28" height="28" loading="lazy">Tagwell</span>
-      <span class="kind">MP3 tag editor</span>
-      <span class="where">macOS</span>
-    </a></li>
-    <li><a href="/moire/" data-preview="/assets/art/moire-preview-light.svg">
-      <span class="name"><img src="/assets/icons/moire.png" alt="" width="28" height="28" loading="lazy">Moire</span>
-      <span class="kind">Compare text, files and folders</span>
-      <span class="where">macOS</span>
-    </a></li>
-    <li><a href="/varve/" data-preview="/assets/art/varve-banner-light.svg">
-      <span class="name"><img src="/assets/icons/varve.png" alt="" width="28" height="28" loading="lazy">Varve</span>
-      <span class="kind">Database manager</span>
-      <span class="where">macOS, Windows, Linux</span>
-    </a></li>
-    <li><a href="/chatkeep/" data-preview="/assets/art/chatkeep-how-it-works-light.svg">
-      <span class="name"><img src="/assets/icons/chatkeep.png" alt="" width="28" height="28" loading="lazy">Chatkeep</span>
-      <span class="kind">Keeps AI chats with moved projects</span>
-      <span class="where">Command line</span>
-    </a></li>
-    <li><a href="/shellops/" data-preview="/assets/art/shellops-how-it-works-light.svg">
-      <span class="name"><img src="/assets/icons/shellops.png" alt="" width="28" height="28" loading="lazy">ShellOps</span>
-      <span class="kind">Docker Compose and PHP from the shell</span>
-      <span class="where">Command line</span>
-    </a></li>
-    <li><a href="/tresso/" data-preview="/assets/icons/tresso.png">
-      <span class="name"><img src="/assets/icons/tresso.png" alt="" width="28" height="28" loading="lazy">Tresso</span>
-      <span class="kind">Email client: do, hand over, know</span>
-      <span class="where">Web, desktop, mobile</span>
-    </a></li>
-    <li><a href="/webra/" data-preview="/assets/icons/webra.png">
-      <span class="name"><img src="/assets/icons/webra.png" alt="" width="28" height="28" loading="lazy">WebRA</span>
-      <span class="kind">Real-time strategy in the browser</span>
-      <span class="where">Browser</span>
-    </a></li>
-    <li class="preview" aria-hidden="true"><img src="/assets/art/tagwell-how-it-works-light.svg" alt="" width="480" height="240"></li>
-  </ul>
-</section>
-
-<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="rise">Downloads</h2>
-  <div class="group rise">
-    <p><img src="/assets/icons/tagwell.png" alt="" width="16" height="16" loading="lazy"><a href="/tagwell/">Tagwell</a> <span data-version="SherinBloemendaal/tagwell" hidden></span></p>
+<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="giant">Downloads</h2>
+  <details class="bar" open>
+    <summary><img src="/assets/icons/tagwell.png" alt="" width="24" height="24" loading="lazy"><span>Tagwell</span><span class="version" data-version="SherinBloemendaal/tagwell" hidden></span></summary>
     <ul>
       <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Tagwell.dmg</a></li>
       <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.zip">Tagwell.zip</a></li>
+      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/moire.png" alt="" width="16" height="16" loading="lazy"><a href="/moire/">Moire</a> <span data-version="SherinBloemendaal/moire" hidden></span></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/moire.png" alt="" width="24" height="24" loading="lazy"><span>Moire</span><span class="version" data-version="SherinBloemendaal/moire" hidden></span></summary>
     <ul>
       <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.dmg">Moire.dmg</a></li>
       <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.zip">Moire.zip</a></li>
+      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/varve.png" alt="" width="16" height="16" loading="lazy"><a href="/varve/">Varve</a> <span data-version="getvarve/varve" hidden></span></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/varve.png" alt="" width="24" height="24" loading="lazy"><span>Varve</span><span class="version" data-version="getvarve/varve" hidden></span></summary>
     <ul>
       <li><span>Mac, Apple Silicon</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-arm64.dmg">varve-macos-arm64.dmg</a></li>
       <li><span>Mac, Intel</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-x64.dmg">varve-macos-x64.dmg</a></li>
       <li><span>Windows installer</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64-setup.exe">varve-windows-x64-setup.exe</a></li>
       <li><span>Windows, for administrators</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64.msi">varve-windows-x64.msi</a></li>
-      <li><span>Everything else</span><a href="/varve/#downloads">All downloads</a></li>
+      <li><span>Linux x64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.AppImage">varve-linux-x64.AppImage</a></li>
+      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.deb">varve-linux-x64.deb</a></li>
+      <li><span>Linux arm64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.AppImage">varve-linux-arm64.AppImage</a></li>
+      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.deb">varve-linux-arm64.deb</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/chatkeep.png" alt="" width="16" height="16" loading="lazy"><a href="/chatkeep/">Chatkeep</a> <span data-version="SherinBloemendaal/chatkeep" hidden></span></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/chatkeep.png" alt="" width="24" height="24" loading="lazy"><span>Chatkeep</span><span class="version" data-version="SherinBloemendaal/chatkeep" hidden></span></summary>
     <ul>
       <li><span>Mac, Apple Silicon</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-apple-darwin.tar.gz">chatkeep-aarch64-apple-darwin.tar.gz</a></li>
       <li><span>Mac, Intel</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-apple-darwin.tar.gz">chatkeep-x86_64-apple-darwin.tar.gz</a></li>
       <li><span>Linux x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-unknown-linux-gnu.tar.gz">chatkeep-x86_64-unknown-linux-gnu.tar.gz</a></li>
       <li><span>Linux arm64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-unknown-linux-gnu.tar.gz">chatkeep-aarch64-unknown-linux-gnu.tar.gz</a></li>
-      <li><span>Everything else</span><a href="/chatkeep/#downloads">All downloads</a></li>
+      <li><span>Windows x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-pc-windows-msvc.zip">chatkeep-x86_64-pc-windows-msvc.zip</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/shellops.png" alt="" width="16" height="16" loading="lazy"><a href="/shellops/">ShellOps</a></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/shellops.png" alt="" width="24" height="24" loading="lazy"><span>ShellOps</span></summary>
     <ul>
       <li><span>Not released yet</span><a href="https://github.com/SherinBloemendaal/shellops-cli">Source on GitHub</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/tresso.png" alt="" width="16" height="16" loading="lazy"><a href="/tresso/">Tresso</a> <span data-version="gettresso/tresso" hidden></span></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/tresso.png" alt="" width="24" height="24" loading="lazy"><span>Tresso</span><span class="version" data-version="gettresso/tresso" hidden></span></summary>
     <ul>
       <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-macos-universal.dmg">tresso-macos-universal.dmg</a></li>
       <li><span>Windows installer</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64-setup.exe">tresso-windows-x64-setup.exe</a></li>
       <li><span>Windows, for administrators</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64.msi">tresso-windows-x64.msi</a></li>
       <li><span>Linux x64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.AppImage">tresso-linux-x86_64.AppImage</a></li>
-      <li><span>Everything else</span><a href="/tresso/#downloads">All downloads</a></li>
+      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.deb">tresso-linux-x86_64.deb</a></li>
+      <li><span>Linux arm64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.AppImage">tresso-linux-aarch64.AppImage</a></li>
+      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.deb">tresso-linux-aarch64.deb</a></li>
+      <li><span>Checksums</span><a href="https://github.com/gettresso/tresso/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
     </ul>
-  </div>
-  <div class="group rise">
-    <p><img src="/assets/icons/webra.png" alt="" width="16" height="16" loading="lazy"><a href="/webra/">WebRA</a></p>
+  </details>
+  <details class="bar">
+    <summary><img src="/assets/icons/webra.png" alt="" width="24" height="24" loading="lazy"><span>WebRA</span></summary>
     <ul>
       <li><span>Plays in the browser</span><a href="https://webra.sherin.dev/">webra.sherin.dev</a></li>
     </ul>
-  </div>
+  </details>
 </section>
-
-<section class="section about" aria-label="About">
-  <dl class="rise">
-    <div><dt>Made by</dt><dd>Sherin Bloemendaal</dd></div>
-    <div><dt>Code</dt><dd><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></dd></div>
-    <div><dt>Licences</dt><dd>MIT, Apache-2.0, AGPL-3.0</dd></div>
+<section class="tile record written rise" aria-label="Written in">
+  <p class="small">Written in</p>
+  <dl>
+    <div><dt>Swift</dt><dd>Tagwell, Moire</dd></div>
+    <div><dt>Rust</dt><dd>Varve, Chatkeep, ShellOps, WebRA</dd></div>
+    <div><dt>TypeScript and Vue</dt><dd>Varve, Tresso</dd></div>
+    <div><dt>PHP and Go</dt><dd>Tresso</dd></div>
   </dl>
-  <p class="statement rise">Each app here started as something I needed myself. They stay small on purpose and do one job well, and most of them are open source, so you can read exactly what an app does before you run it.</p>
-  <div class="record rise">
-    <div>
-      <p>Written in</p>
-      <ul>
-        <li><span>Tagwell, Moire</span><span>Swift</span></li>
-        <li><span>Varve, Chatkeep, ShellOps</span><span>Rust</span></li>
-        <li><span>Tresso</span><span>TypeScript, PHP, Go</span></li>
-        <li><span>WebRA</span><span>Rust, WebAssembly</span></li>
-      </ul>
-    </div>
-    <div>
-      <p>Licence</p>
-      <ul>
-        <li><span>Tagwell, Moire, Chatkeep</span><span>MIT</span></li>
-        <li><span>Varve Community</span><span>Apache-2.0</span></li>
-        <li><span>Tresso</span><span>AGPL-3.0</span></li>
-      </ul>
-    </div>
-  </div>
+</section>
+<section class="tile record licence rise" aria-label="Licence">
+  <p class="small">Licence</p>
+  <dl>
+    <div><dt>MIT</dt><dd>Tagwell, Moire, Chatkeep</dd></div>
+    <div><dt>Apache-2.0</dt><dd>Varve Community</dd></div>
+    <div><dt>AGPL-3.0</dt><dd>Tresso</dd></div>
+  </dl>
+</section>
+<section class="tile why rise" aria-label="Why these apps">
+  <p>Each app started as something I needed myself. They stay small on purpose, and most are open source, so you can read what an app does before you run it.</p>
 </section>
 </main>
-<footer class="footer">
-  <p>Apps by Sherin Bloemendaal</p>
-  <nav aria-label="Apps">
-    <a href="/tagwell/">Tagwell</a>
-    <a href="/moire/">Moire</a>
-    <a href="/varve/">Varve</a>
-    <a href="/chatkeep/">Chatkeep</a>
-    <a href="/shellops/">ShellOps</a>
-    <a href="/tresso/">Tresso</a>
-    <a href="/webra/">WebRA</a>
-    <a href="https://github.com/SherinBloemendaal">GitHub</a>
-  </nav>
-  <p class="end">2026 · No cookies, no tracking</p>
+<footer class="board footer">
+  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
+  <div class="tile foot-apps">
+    <p class="small">The apps</p>
+    <ul>
+      <li><a href="/tagwell/">Tagwell</a></li>
+      <li><a href="/moire/">Moire</a></li>
+      <li><a href="/varve/">Varve</a></li>
+      <li><a href="/chatkeep/">Chatkeep</a></li>
+      <li><a href="/shellops/">ShellOps</a></li>
+      <li><a href="/tresso/">Tresso</a></li>
+      <li><a href="/webra/">WebRA</a></li>
+    </ul>
+  </div>
+  <div class="tile foot-me">
+    <p class="small">Made by</p>
+    <p>Sherin Bloemendaal</p>
+    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
+  </div>
+  <div class="tile foot-end">
+    <p class="small">2026 · No cookies, no tracking</p>
+    <a class="button" href="#main">Back to the top</a>
+  </div>
 </footer>
 </body>
 </html>

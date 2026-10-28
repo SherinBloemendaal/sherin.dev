@@ -9,86 +9,132 @@
 <meta property="og:title" content="Tagwell: MP3 tag editor">
 <meta property="og:description" content="A small, native Mac app for editing the tags of one MP3 or hundreds at once. It writes only the fields you change; the audio and the rest of the tag stay exactly as they were.">
 <meta property="og:url" content="https://sherin.dev/tagwell/">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="#0b0c0e">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/switzer-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
-  <div class="column"><a class="wordmark" href="/"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="5" fill="#1f3038"/><path d="M6.5 8 L10 11 L6.5 14" fill="none" stroke="#5fd0db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="11.5" y="13.2" width="5" height="1.8" rx=".9" fill="#e8eef1"/></svg><span>sherin.dev</span></a></div>
-  <a class="corner" href="https://github.com/SherinBloemendaal/tagwell">Tagwell on GitHub</a>
+<main id="main" class="board">
+<header class="tile band c-tagwell rise" aria-label="Tagwell">
+  <p aria-hidden="true">Tagwell</p>
 </header>
-<main id="main">
-<section class="hero app column" aria-labelledby="title">
-  <div class="app-head rise" style="--i:0"><img src="/assets/icons/tagwell.png" alt="Tagwell icon" width="72" height="72"></div>
-  <h1 id="title" class="rise" style="--i:1">Tagwell: MP3 tags, nothing else.</h1>
-  <p class="lead rise" style="--i:2">A small, native Mac app for editing the tags of one MP3 or hundreds at once. It writes only the fields you change; the audio and the rest of the tag stay exactly as they were.</p>
-  <div class="actions rise" style="--i:3">
-    <a class="button" href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Download for Mac</a>
-    <a class="textlink" href="https://github.com/SherinBloemendaal/tagwell">Source on GitHub <span aria-hidden="true">→</span></a>
-  </div>
-  <div class="instrument rise" style="--i:4" id="install" data-ui data-instrument>
+<nav class="navrow" aria-label="Site">
+  <a class="tile navlink rise" href="/">All apps</a>
+  <a class="tile navlink rise" href="#install">Install</a>
+  <a class="tile navlink rise" href="#downloads">Downloads</a>
+  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal/tagwell">GitHub</a>
+</nav>
+
+<section class="tile statement rise" aria-labelledby="title">
+  <img class="icon" src="/assets/icons/tagwell.png" alt="Tagwell icon" width="128" height="128">
+  <h1 id="title">Tagwell: MP3 tags, nothing else.</h1>
+  <p>A small, native Mac app for editing the tags of one MP3 or hundreds at once. It writes only the fields you change; the audio and the rest of the tag stay exactly as they were.</p>
+  <p class="actions"><a class="button c-tagwell" href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Download for Mac</a></p>
+  
+</section>
+<section class="tile install c-tagwell rise" id="install" aria-labelledby="install-title" data-ui data-instrument>
+  <h2 id="install-title" class="small">Install Tagwell</h2>
   
   <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/tagwell/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
   
+  <ol class="steps" aria-label="What the installer does on a Mac">
+    <li><span>Download</span>Tagwell.zip</li>
+    <li><span>Checksum</span>SHA-256 matches SHA256SUMS</li>
+    <li><span>Installed</span>/Applications/Tagwell.app</li>
+  </ol>
   <p class="note">Installs Tagwell.app for macOS 15 or later.</p>
-</div>
-  <figure class="figure rise">
+</section>
+<figure class="tile paper art rise">
   <img src="/assets/art/tagwell-how-it-works-light.svg" alt="What a save touches: changed fields are rewritten, the rest of the tag is kept byte for byte, the audio is never touched, and an ID3v1 tag is kept in sync" width="1200" height="600" loading="lazy">
 </figure>
-</section>
 
-<section class="section column" aria-labelledby="points-title">
-  <h2 id="points-title" class="rise">What it does</h2>
-  <ul class="points rise">
-    <li><strong>Only what you changed is written.</strong> MusicBrainz IDs, iTunes data, lyrics and ratings stay byte for byte, and the tag keeps its ID3 version.</li>
-    <li><strong>Bulk edit.</strong> Select a hundred files and set the artist, album, year or cover art once. Number tracks or turn file names into titles in one click.</li>
-    <li><strong>Artist folders.</strong> Drag files onto an artist in the sidebar to set their artist. Saved artists come back as suggestions, so a name is spelled the same everywhere.</li>
-    <li><strong>Cover art from YouTube.</strong> Search for the track and pick a thumbnail, or let Tagwell find the video in a yt-dlp file name. Cropped to a square by default.</li>
-    <li><strong>Rename on save, if you want.</strong> Files can take the name Artist - Title. An existing file is never overwritten.</li>
-    <li><strong>Safe saves.</strong> Files are written in the background with a progress window, next to the original and swapped in, so a failed save never leaves a broken MP3.</li>
+<h2 class="sr-only" id="points">What it does</h2>
+<div class="tile point rise">
+  <p class="lead-line">Only what you changed is written.</p>
+  <p>MusicBrainz IDs, iTunes data, lyrics and ratings stay byte for byte, and the tag keeps its ID3 version.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Bulk edit.</p>
+  <p>Select a hundred files and set the artist, album, year or cover art once. Number tracks or turn file names into titles in one click.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Artist folders.</p>
+  <p>Drag files onto an artist in the sidebar to set their artist. Saved artists come back as suggestions, so a name is spelled the same everywhere.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Cover art from YouTube.</p>
+  <p>Search for the track and pick a thumbnail, or let Tagwell find the video in a yt-dlp file name. Cropped to a square by default.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Rename on save, if you want.</p>
+  <p>Files can take the name Artist - Title. An existing file is never overwritten.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Safe saves.</p>
+  <p>Files are written in the background with a progress window, next to the original and swapped in, so a failed save never leaves a broken MP3.</p>
+</div>
+
+<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
+  <h2 id="downloads-title" class="giant">Downloads</h2>
+  <p class="small">Latest release <span class="version" data-version="SherinBloemendaal/tagwell" hidden></span></p>
+  <ul class="files">
+    <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Tagwell.dmg</a></li>
+    <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.zip">Tagwell.zip</a></li>
+    <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
   </ul>
 </section>
+<h2 class="sr-only" id="details">Details</h2>
+<div class="tile fact rise">
+  <p class="small">Needs</p>
+  <p>macOS 15 or later</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Runs on</p>
+  <p>Apple Silicon and Intel</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Written in</p>
+  <p>Swift and SwiftUI</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Licence</p>
+  <p>MIT</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Source</p>
+  <p><a href="https://github.com/SherinBloemendaal/tagwell">github.com/SherinBloemendaal/tagwell</a></p>
+</div>
 
-<section class="section column rows" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="rise">Downloads</h2>
-  <div class="group rise">
-    <p>Latest release <span data-version="SherinBloemendaal/tagwell" hidden></span></p>
+<div class="tile marquee one c-tagwell" aria-hidden="true">
+  <div class="track"><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span><span>Tagwell</span></div>
+</div>
+</main>
+<footer class="board footer">
+  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
+  <div class="tile foot-apps">
+    <p class="small">The apps</p>
     <ul>
-      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Tagwell.dmg</a></li>
-      <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.zip">Tagwell.zip</a></li>
-      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
+      <li><a href="/tagwell/">Tagwell</a></li>
+      <li><a href="/moire/">Moire</a></li>
+      <li><a href="/varve/">Varve</a></li>
+      <li><a href="/chatkeep/">Chatkeep</a></li>
+      <li><a href="/shellops/">ShellOps</a></li>
+      <li><a href="/tresso/">Tresso</a></li>
+      <li><a href="/webra/">WebRA</a></li>
     </ul>
   </div>
-</section>
-<section class="section column" aria-labelledby="facts-title">
-  <h2 id="facts-title" class="rise">Details</h2>
-  <dl class="facts rise">
-    <dt>Needs</dt><dd>macOS 15 or later</dd>
-    <dt>Runs on</dt><dd>Apple Silicon and Intel</dd>
-    <dt>Written in</dt><dd>Swift and SwiftUI</dd>
-    <dt>Licence</dt><dd>MIT</dd>
-    <dt>Source</dt><dd><a href="https://github.com/SherinBloemendaal/tagwell">github.com/SherinBloemendaal/tagwell</a></dd>
-  </dl>
-</section>
-</main>
-<footer class="footer">
-  <p>Apps by Sherin Bloemendaal</p>
-  <nav aria-label="Apps">
-    <a href="/tagwell/">Tagwell</a>
-    <a href="/moire/">Moire</a>
-    <a href="/varve/">Varve</a>
-    <a href="/chatkeep/">Chatkeep</a>
-    <a href="/shellops/">ShellOps</a>
-    <a href="/tresso/">Tresso</a>
-    <a href="/webra/">WebRA</a>
-    <a href="https://github.com/SherinBloemendaal">GitHub</a>
-  </nav>
-  <p class="end">2026 · No cookies, no tracking</p>
+  <div class="tile foot-me">
+    <p class="small">Made by</p>
+    <p>Sherin Bloemendaal</p>
+    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
+  </div>
+  <div class="tile foot-end">
+    <p class="small">2026 · No cookies, no tracking</p>
+    <a class="button" href="#main">Back to the top</a>
+  </div>
 </footer>
 </body>
 </html>

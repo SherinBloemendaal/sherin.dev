@@ -1,4 +1,4 @@
-/* sherin.dev: a dark board of tiles, each app in the colour of its own icon. */
+/* sherin.dev: a dark board of glass tiles, each app in the colour of its own icon, over soft lights. */
 
 @font-face {
   font-family: "Hanken Grotesk";
@@ -20,6 +20,13 @@
   --row: 88px;
   --pad: 22px;
 
+  /* Glass: how much of a tile's colour stays, the blur behind it, and its lit edge. */
+  --mix: 62%;
+  --frost: blur(26px) saturate(170%);
+  --edge: inset 0 1px 0 rgb(255 255 255 / 0.18), inset 0 0 0 1px rgb(255 255 255 / 0.07); /* taste-skill-ignore: the lit rim of the glass */
+  --pane: rgb(255 255 255 / 0.06);
+  --pane-hover: rgb(255 255 255 / 0.11);
+
   --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
@@ -33,7 +40,7 @@
 }
 
 /* Each app's colour, taken from its icon. --c fills the tile, --on is the text on it. */
-.c-ink { --c: var(--tile); --on: var(--ink); --soft: var(--muted); }
+.c-ink { --c: var(--tile); --on: var(--ink); --soft: var(--muted); --mix: 50%; }
 .c-tagwell { --c: #b0185f; --on: #fff; --soft: #ffd6e8; }
 .c-moire { --c: #5a3ef0; --on: #fff; --soft: #ddd6ff; }
 .c-varve { --c: #262340; --on: #fff; --soft: #c9c2ff; --hint: #8f80ff; }
@@ -55,6 +62,7 @@ html {
 
 body {
   margin: 0;
+  min-height: 100svh;
   background: var(--ground);
   color: var(--ink);
   font-family: var(--sans);
@@ -134,6 +142,40 @@ ul {
   color: var(--muted);
 }
 
+/* ---------- The lights behind the glass ---------- */
+
+.glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow i {
+  position: absolute;
+  width: 48vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.42;
+  filter: blur(90px);
+  animation: drift 60s var(--ease) infinite alternate;
+}
+
+.glow i:nth-child(1) { left: -12vmax; top: -14vmax; background: #ff4f97; }
+.glow i:nth-child(2) { right: -14vmax; top: 6vh; background: #7a5cff; animation-delay: -15s; }
+.glow i:nth-child(3) { left: 18vw; bottom: -22vmax; background: #1fc7b6; animation-delay: -30s; }
+.glow i:nth-child(4) { right: 4vw; bottom: -10vmax; width: 30vmax; background: #ff8a3d; animation-delay: -45s; }
+
+/* On an app page every light takes that app's colour. */
+.glow[class*="c-"] i { background: var(--c); opacity: 0.6; }
+.glow[class*="c-"] i:nth-child(even) { background: var(--hint, var(--c)); opacity: 0.4; }
+
+@keyframes drift {
+  50% { transform: translate(6vw, 4vh) scale(1.08); }
+  to { transform: translate(-4vw, 8vh) scale(0.94); }
+}
+
 /* ---------- The board ---------- */
 
 .board {
@@ -154,7 +196,10 @@ ul {
   min-width: 0;
   overflow: hidden;
   border-radius: var(--radius);
-  background: var(--c, var(--tile));
+  background-color: color-mix(in srgb, var(--c, var(--tile)) var(--mix), transparent);
+  -webkit-backdrop-filter: var(--frost); /* taste-skill-ignore: the glass design asked for */
+  backdrop-filter: var(--frost); /* taste-skill-ignore: the glass design asked for */
+  box-shadow: var(--edge); /* taste-skill-ignore: the glass design asked for */
   color: var(--on, var(--ink));
   padding: var(--pad);
 }
@@ -193,7 +238,7 @@ ul {
 }
 
 .navlink:hover {
-  background: var(--tile-2);
+  background-color: var(--pane-hover);
 }
 
 .navlink::after {
@@ -507,7 +552,6 @@ ul {
 .marquee {
   grid-column: 1 / -1;
   padding: 18px 0;
-  background: var(--tile);
 }
 
 .marquee .track {
@@ -538,10 +582,6 @@ ul {
 .marquee span:nth-child(7n + 7) { color: #ff6a5c; }
 
 /* On an app page the marquee repeats the one name, in that app's colour. */
-.marquee.one {
-  background: var(--c);
-}
-
 .marquee.one span {
   color: var(--on) !important;
 }
@@ -582,7 +622,7 @@ ul {
 
 .bar {
   border-radius: var(--radius);
-  background: var(--tile-2);
+  background: var(--pane);
 }
 
 .bar summary {
@@ -603,7 +643,7 @@ ul {
 }
 
 .bar summary:hover {
-  background: #262a31;
+  background: var(--pane-hover);
 }
 
 .bar summary::after {
@@ -665,7 +705,7 @@ ul {
 .files li {
   padding: 14px 18px;
   border-radius: var(--radius);
-  background: var(--tile-2);
+  background: var(--pane);
 }
 
 /* ---------- Record tiles ---------- */
@@ -700,9 +740,9 @@ ul {
 }
 
 .why {
+  --c: #b0185f;
   grid-column: span 4;
   grid-row: span 1;
-  background: #b0185f;
   color: #fff;
   font-size: var(--step-body);
 }
@@ -728,7 +768,8 @@ ul {
 }
 
 .paper {
-  background: var(--paper);
+  --c: var(--paper);
+  --mix: 92%;
   color: #14161a;
   padding: 16px;
 }
@@ -751,7 +792,7 @@ ul {
 }
 
 .point:nth-of-type(3n + 1) {
-  background: var(--tile-2);
+  --c: var(--tile-2);
 }
 
 .lead-line {
@@ -793,7 +834,10 @@ ul {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: end;
   gap: 4px;
-  background: var(--ground);
+  background: transparent;
+  box-shadow: none; /* taste-skill-ignore: the glass design asked for */
+  -webkit-backdrop-filter: none; /* taste-skill-ignore: the glass design asked for */
+  backdrop-filter: none; /* taste-skill-ignore: the glass design asked for */
   text-decoration: none;
 }
 
@@ -803,7 +847,10 @@ ul {
   justify-content: center;
   height: 100%;
   border-radius: var(--radius);
-  background: var(--c);
+  background-color: color-mix(in srgb, var(--c) 80%, transparent);
+  -webkit-backdrop-filter: var(--frost); /* taste-skill-ignore: the glass design asked for */
+  backdrop-filter: var(--frost); /* taste-skill-ignore: the glass design asked for */
+  box-shadow: var(--edge); /* taste-skill-ignore: the glass design asked for */
   color: var(--ground);
   font-size: clamp(4rem, 1rem + 12vw, 13rem);
   font-weight: 500;
@@ -1012,7 +1059,8 @@ ul {
     scroll-behavior: auto;
   }
 
-  .marquee .track {
+  .marquee .track,
+  .glow i {
     animation: none;
   }
 

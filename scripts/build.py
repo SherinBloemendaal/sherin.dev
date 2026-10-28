@@ -291,7 +291,9 @@ def e(text: str) -> str:
     return escape(text, quote=True)
 
 
-def page(title: str, description: str, path: str, body: str, theme: str = "#0b0c0e") -> str:
+def page(title: str, description: str, path: str, body: str, theme: str = "#0b0c0e", glow: str = "") -> str:
+    # Soft lights behind the glass tiles: every app's colour on the home page, one app's on its own page.
+    lights = f'<div class="glow{f" {glow}" if glow else ""}" aria-hidden="true"><i></i><i></i><i></i><i></i></div>'
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -310,6 +312,7 @@ def page(title: str, description: str, path: str, body: str, theme: str = "#0b0c
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
+{lights}
 <a class="skip" href="#main">Skip to content</a>
 <main id="main" class="board">
 {body}
@@ -572,7 +575,7 @@ def app_page(a: dict) -> str:
 {fact_tiles}
 
 {marquee([a["name"]] * 6, f"c-{a['slug']}")}"""
-    return page(f"{a['name']}: {a['kind']}", a["lead"], f"/{a['slug']}/", body)
+    return page(f"{a['name']}: {a['kind']}", a["lead"], f"/{a['slug']}/", body, glow=f"c-{a['slug']}")
 
 
 def not_found() -> str:

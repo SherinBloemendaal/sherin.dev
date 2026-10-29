@@ -47,6 +47,7 @@
 .c-chatkeep { --c: #0b6a63; --on: #fff; --soft: #c8f3ee; }
 .c-shellops { --c: #1f3038; --on: #fff; --soft: #a8e6ec; --hint: #5fd0db; }
 .c-tresso { --c: #a8470d; --on: #fff; --soft: #ffe0cb; }
+.c-eb-sessions { --c: #30395f; --on: #fff; --soft: #dbe2f5; --hint: #8ea0d0; }
 .c-webra { --c: #b02218; --on: #fff; --soft: #ffd9d4; }
 
 *,

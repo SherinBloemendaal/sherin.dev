@@ -225,6 +225,30 @@ APPS = [
         ],
     },
     {
+        "slug": "eb-sessions",
+        "name": "EB Sessions",
+        "kind": "Chrome extension for e-Boekhouden",
+        "where": "Chrome",
+        "title": "EB Sessions: e-Boekhouden without the login friction.",
+        "lead": "A Chrome extension for the Dutch bookkeeping app e-Boekhouden.nl. Switch between administrations in one click, "
+        "log in with 1Password, and get a login dialog instead of a lost page when a session expires.",
+        "primary": ("What it does", "#points"),
+        "unreleased": "Not released yet, and not on the Chrome Web Store. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.",
+        "points": [
+            ("One click between administrations.", "Every administration you logged in to stays one click away, and all e-Boekhouden tabs move over. No logging out and in."),
+            ("1Password on the login page.", "The login form moves out of e-Boekhouden's old frameset, so 1Password's inline menu works. Passwords never touch the extension."),
+            ("Expired? Log in where you are.", "A login dialog over the page instead of the login screen, and afterwards you are back where you were."),
+            ("A calmer design, if you want it.", "One switch turns on redesigned screens for logging in, importing bank lines, invoices, subscriptions and the archive."),
+            ("It never books for you.", "It only changes how pages look and work in your own browser. Every save and every submit is your own click."),
+        ],
+        "facts": [
+            ("Runs in", "Chrome and other Chromium browsers"),
+            ("Works with", "e-Boekhouden.nl"),
+            ("Written in", "JavaScript"),
+            ("Status", "Not released yet"),
+        ],
+    },
+    {
         "slug": "webra",
         "name": "WebRA",
         "kind": "Real-time strategy in the browser",
@@ -279,6 +303,7 @@ WRITTEN_IN = [
     ("Rust", ["Varve", "Chatkeep", "ShellOps", "WebRA"]),
     ("TypeScript and Vue", ["Varve", "Tresso"]),
     ("PHP and Go", ["Tresso"]),
+    ("JavaScript", ["EB Sessions"]),
 ]
 LICENCES = [
     ("MIT", ["Tagwell", "Moire", "Chatkeep"]),
@@ -428,6 +453,8 @@ def downloads_list(apps: list[dict], open_first: bool = True) -> str:
             rows = "\n".join(f'      <li><span>{e(label)}</span><a href="{e(url)}">{e(file)}</a></li>' for label, file, url in a["downloads"])
         elif a["slug"] == "webra":
             rows = '      <li><span>Plays in the browser</span><a href="https://webra.sherin.dev/">webra.sherin.dev</a></li>'
+        elif not a.get("repo"):
+            rows = f'      <li><span>Not released yet</span><a href="/{a["slug"]}/">About {e(a["name"])}</a></li>'
         else:
             rows = f'      <li><span>Not released yet</span><a href="https://github.com/{a["repo"]}">Source on GitHub</a></li>'
         bars.append(
@@ -469,6 +496,7 @@ def home() -> str:
             ("chatkeep", "large"),
             ("shellops", "tall"),
             ("tresso", "tall"),
+            ("eb-sessions", "wide"),
             ("webra", "wide"),
         ]
     )
@@ -476,8 +504,8 @@ def home() -> str:
 {nav([("The apps", "#apps"), ("Install", "#install"), ("Downloads", "#downloads"), ("GitHub", GITHUB)])}
 
 <section class="tile statement rise" aria-labelledby="title">
-  <h1 id="title">Seven apps I build and use myself.</h1>
-  <p>Two Mac apps, a database manager, two command-line tools, an email client and a strategy game. Most of them are open source, and most install with one line.</p>
+  <h1 id="title">Eight apps I build and use myself.</h1>
+  <p>Two Mac apps, a database manager, two command-line tools, an email client, a browser extension for bookkeeping and a strategy game. Most of them are open source, and most install with one line.</p>
 </section>
 {instrument(INSTALL_APPS, "tagwell")}
 
@@ -497,7 +525,7 @@ def home() -> str:
 </section>"""
     return page(
         "Sherin Bloemendaal: apps",
-        "Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso and WebRA, with downloads and one-line installs.",
+        "Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso, EB Sessions and WebRA, with downloads and one-line installs.",
         "/",
         body,
     )

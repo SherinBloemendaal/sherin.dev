@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EB Sessions: Chrome extension for e-Boekhouden</title>
+<meta name="description" content="A Chrome extension for the Dutch bookkeeping app e-Boekhouden.nl. Switch between administrations in one click, log in with 1Password, and get a login dialog instead of a lost page when a session expires.">
+<link rel="canonical" href="https://sherin.dev/eb-sessions/">
+<meta property="og:title" content="EB Sessions: Chrome extension for e-Boekhouden">
+<meta property="og:description" content="A Chrome extension for the Dutch bookkeeping app e-Boekhouden.nl. Switch between administrations in one click, log in with 1Password, and get a login dialog instead of a lost page when a session expires.">
+<meta property="og:url" content="https://sherin.dev/eb-sessions/">
+<meta name="theme-color" content="#0b0c0e">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+</head>
+<body>
+<div class="glow c-eb-sessions" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main" class="board">
+<header class="tile band c-eb-sessions rise" aria-label="EB Sessions">
+  <p aria-hidden="true">EB Sessions</p>
+</header>
+<nav class="navrow" aria-label="Site">
+  <a class="tile navlink rise" href="/">All apps</a>
+  <a class="tile navlink rise" href="#points">What it does</a>
+  <a class="tile navlink rise" href="#details">Details</a>
+  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal">GitHub</a>
+</nav>
+
+<section class="tile statement rise" aria-labelledby="title">
+  <img class="icon" src="/assets/icons/eb-sessions.png" alt="EB Sessions icon" width="128" height="128">
+  <h1 id="title">EB Sessions: e-Boekhouden without the login friction.</h1>
+  <p>A Chrome extension for the Dutch bookkeeping app e-Boekhouden.nl. Switch between administrations in one click, log in with 1Password, and get a login dialog instead of a lost page when a session expires.</p>
+  <p class="actions"><a class="button c-eb-sessions" href="#points">What it does</a></p>
+  <p class="unreleased">Not released yet, and not on the Chrome Web Store. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.</p>
+</section>
+
+<div class="tile art-icon c-eb-sessions rise"><img src="/assets/icons/eb-sessions.png" alt="" width="256" height="256" loading="lazy"></div>
+
+<h2 class="sr-only" id="points">What it does</h2>
+<div class="tile point rise">
+  <p class="lead-line">One click between administrations.</p>
+  <p>Every administration you logged in to stays one click away, and all e-Boekhouden tabs move over. No logging out and in.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">1Password on the login page.</p>
+  <p>The login form moves out of e-Boekhouden&#x27;s old frameset, so 1Password&#x27;s inline menu works. Passwords never touch the extension.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">Expired? Log in where you are.</p>
+  <p>A login dialog over the page instead of the login screen, and afterwards you are back where you were.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">A calmer design, if you want it.</p>
+  <p>One switch turns on redesigned screens for logging in, importing bank lines, invoices, subscriptions and the archive.</p>
+</div>
+<div class="tile point rise">
+  <p class="lead-line">It never books for you.</p>
+  <p>It only changes how pages look and work in your own browser. Every save and every submit is your own click.</p>
+</div>
+
+
+<h2 class="sr-only" id="details">Details</h2>
+<div class="tile fact rise">
+  <p class="small">Runs in</p>
+  <p>Chrome and other Chromium browsers</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Works with</p>
+  <p>e-Boekhouden.nl</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Written in</p>
+  <p>JavaScript</p>
+</div>
+<div class="tile fact rise">
+  <p class="small">Status</p>
+  <p>Not released yet</p>
+</div>
+
+<div class="tile marquee one c-eb-sessions" aria-hidden="true">
+  <div class="track"><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span><span>EB Sessions</span></div>
+</div>
+</main>
+<footer class="board footer">
+  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
+  <div class="tile foot-apps">
+    <p class="small">The apps</p>
+    <ul>
+      <li><a href="/tagwell/">Tagwell</a></li>
+      <li><a href="/moire/">Moire</a></li>
+      <li><a href="/varve/">Varve</a></li>
+      <li><a href="/chatkeep/">Chatkeep</a></li>
+      <li><a href="/shellops/">ShellOps</a></li>
+      <li><a href="/tresso/">Tresso</a></li>
+      <li><a href="/eb-sessions/">EB Sessions</a></li>
+      <li><a href="/webra/">WebRA</a></li>
+    </ul>
+  </div>
+  <div class="tile foot-me">
+    <p class="small">Made by</p>
+    <p>Sherin Bloemendaal</p>
+    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
+  </div>
+  <div class="tile foot-end">
+    <p class="small">2026 · No cookies, no tracking</p>
+    <a class="button" href="#main">Back to the top</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -186,6 +186,7 @@ APPS = [
         "where": "Web, desktop, mobile",
         "lang": "TypeScript, PHP, Go",
         "repo": "gettresso/tresso",
+        "site": "https://gettresso.com",
         "title": "Tresso: do, hand over or know.",
         "lead": "An email client built around one idea: every email is something to do, to hand over, "
         "or to know. Open source and self-hostable, for the web, the desktop and your phone.",

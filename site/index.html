@@ -9,224 +9,116 @@
 <meta property="og:title" content="Sherin Bloemendaal: apps">
 <meta property="og:description" content="Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso, EB Sessions and WebRA, with downloads and one-line installs.">
 <meta property="og:url" content="https://sherin.dev/">
-<meta name="theme-color" content="#0b0c0e">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
-<div class="glow" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <a class="skip" href="#main">Skip to content</a>
-<main id="main" class="board">
-<header class="tile band c-ink rise" aria-label="Sherin Bloemendaal">
-  <p aria-hidden="true">Sherin Bloemendaal</p>
+<div class="wrap">
+<header class="top">
+  <p class="brand"><a href="/"><span class="accent">~/</span>sherin.dev</a></p>
+  <nav aria-label="Site">
+    <a href="/#apps">apps</a>
+    <a href="/#install">install</a>
+    <a href="https://github.com/SherinBloemendaal">github</a>
+  </nav>
 </header>
-<nav class="navrow" aria-label="Site">
-  <a class="tile navlink rise" href="#apps">The apps</a>
-  <a class="tile navlink rise" href="#install">Install</a>
-  <a class="tile navlink rise" href="#downloads">Downloads</a>
-  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal">GitHub</a>
-</nav>
-
-<section class="tile statement rise" aria-labelledby="title">
-  <h1 id="title">Eight apps I build and use myself.</h1>
-  <p>Two Mac apps, a database manager, two command-line tools, an email client, a browser extension for bookkeeping and a strategy game. Most of them are open source, and most install with one line.</p>
-</section>
-<section class="tile install c-tagwell rise" id="install" aria-labelledby="install-title" data-ui data-instrument>
-  <h2 id="install-title" class="small">Install in one line</h2>
-  <div class="apps" role="group" aria-label="App to install"><button type="button" data-app="tagwell" data-shell="curl -fsSL https://sherin.dev/tagwell/install.sh | bash" data-windows="" data-note="Installs Tagwell.app for macOS 15 or later. &lt;a href=&quot;/tagwell/&quot;&gt;About Tagwell&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;Tagwell.zip&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Tagwell.app&quot;]]" aria-pressed="true">Tagwell</button><button type="button" data-app="moire" data-shell="curl -fsSL https://sherin.dev/moire/install.sh | bash" data-windows="" data-note="Installs Moire.app for macOS 15 or later. &lt;a href=&quot;/moire/&quot;&gt;About Moire&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;Moire.zip&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Moire.app&quot;]]" aria-pressed="false">Moire</button><button type="button" data-app="varve" data-shell="curl -fsSL https://sherin.dev/varve/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/varve/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/varve/&quot;&gt;About Varve&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;varve-macos-arm64.app.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Varve Community.app&quot;]]" aria-pressed="false">Varve</button><button type="button" data-app="chatkeep" data-shell="curl -fsSL https://sherin.dev/chatkeep/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/chatkeep/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/chatkeep/&quot;&gt;About Chatkeep&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;chatkeep-aarch64-apple-darwin.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;~/.chatkeep/bin/chatkeep&quot;]]" aria-pressed="false">Chatkeep</button><button type="button" data-app="tresso" data-shell="curl -fsSL https://sherin.dev/tresso/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;" data-note="The desktop app: macOS and Linux above, Windows below. &lt;a href=&quot;/tresso/&quot;&gt;About Tresso&lt;/a&gt;" data-steps="[[&quot;Download&quot;, &quot;tresso-macos-universal.app.tar.gz&quot;], [&quot;Checksum&quot;, &quot;SHA-256 matches SHA256SUMS&quot;], [&quot;Installed&quot;, &quot;/Applications/Tresso.app&quot;]]" aria-pressed="false">Tresso</button></div>
-  <div class="command" data-command="shell"><pre><code>curl -fsSL https://sherin.dev/tagwell/install.sh | bash</code></pre><button class="copy" type="button" hidden>Copy</button></div>
-  <div class="command" data-command="windows" hidden><pre><code></code></pre><button class="copy" type="button" hidden>Copy</button></div>
-  <ol class="steps" aria-label="What the installer does on a Mac">
-    <li><span>Download</span>Tagwell.zip</li>
-    <li><span>Checksum</span>SHA-256 matches SHA256SUMS</li>
-    <li><span>Installed</span>/Applications/Tagwell.app</li>
-  </ol>
-  <p class="note">Installs Tagwell.app for macOS 15 or later. <a href="/tagwell/">About Tagwell</a></p>
+<main id="main">
+<section class="hero">
+  <p class="prompt"><span class="sr-only"># sherin bloemendaal</span><span aria-hidden="true"><span data-type># sherin bloemendaal</span><span class="cursor">▍</span></span></p>
+  <h1>Small tools I build, with the source, the downloads and a one-line install.</h1>
+  <p class="lead">I am a programmer. These are my own apps: native Mac apps in Swift, command-line tools in Rust, and desktop apps for every platform.</p>
 </section>
 
-<h2 class="sr-only" id="apps">The apps</h2>
-<a class="tile app large c-tagwell rise" href="/tagwell/">
-  <img class="icon" src="/assets/icons/tagwell.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">Tagwell</span>
-  <span class="kind">MP3 tag editor</span>
-  <span class="meta">macOS <span class="version" data-version="SherinBloemendaal/tagwell" hidden></span></span>
-  <span class="peek"><img src="/assets/art/tagwell-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
-</a>
-<a class="tile app tall c-moire rise" href="/moire/">
-  <img class="icon" src="/assets/icons/moire.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">Moire</span>
-  <span class="kind">Compare text, files and folders</span>
-  <span class="meta">macOS <span class="version" data-version="SherinBloemendaal/moire" hidden></span></span>
-  <span class="peek"><img src="/assets/art/moire-preview-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
-</a>
-<a class="tile app tall c-varve rise" href="/varve/">
-  <img class="icon" src="/assets/icons/varve.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">Varve</span>
-  <span class="kind">Database manager</span>
-  <span class="meta">macOS, Windows, Linux <span class="version" data-version="getvarve/varve" hidden></span></span>
-  <span class="peek"><img src="/assets/art/varve-banner-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
-</a>
-<a class="tile app large c-chatkeep rise" href="/chatkeep/">
-  <img class="icon" src="/assets/icons/chatkeep.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">Chatkeep</span>
-  <span class="kind">Keeps AI chats with moved projects</span>
-  <span class="meta">Command line <span class="version" data-version="SherinBloemendaal/chatkeep" hidden></span></span>
-  <span class="peek"><img src="/assets/art/chatkeep-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
-</a>
-<a class="tile app tall c-shellops rise" href="/shellops/">
-  <img class="icon" src="/assets/icons/shellops.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">ShellOps</span>
-  <span class="kind">Docker Compose and PHP from the shell</span>
-  <span class="meta">Command line <span class="status">Not released yet</span></span>
-  <span class="peek"><img src="/assets/art/shellops-how-it-works-light.svg" alt="" width="1200" height="600" loading="lazy"></span>
-</a>
-<a class="tile app tall c-tresso rise" href="/tresso/">
-  <img class="icon" src="/assets/icons/tresso.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">Tresso</span>
-  <span class="kind">Email client: do, hand over, know</span>
-  <span class="meta">Web, desktop, mobile <span class="version" data-version="gettresso/tresso" hidden></span></span>
-  
-</a>
-<a class="tile app wide c-eb-sessions rise" href="/eb-sessions/">
-  <img class="icon" src="/assets/icons/eb-sessions.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">EB Sessions</span>
-  <span class="kind">Chrome extension for e-Boekhouden</span>
-  <span class="meta">Chrome <span class="status">Not released yet</span></span>
-  
-</a>
-<a class="tile app wide c-webra rise" href="/webra/">
-  <img class="icon" src="/assets/icons/webra.png" alt="" width="128" height="128" loading="lazy">
-  <span class="name">WebRA</span>
-  <span class="kind">Real-time strategy in the browser</span>
-  <span class="meta">Browser <span class="status">Plays in the browser</span></span>
-  
-</a>
-
-<div class="tile marquee" aria-hidden="true">
-  <div class="track"><span>Tagwell</span><span>Moire</span><span>Varve</span><span>Chatkeep</span><span>ShellOps</span><span>Tresso</span><span>EB Sessions</span><span>WebRA</span><span>Tagwell</span><span>Moire</span><span>Varve</span><span>Chatkeep</span><span>ShellOps</span><span>Tresso</span><span>EB Sessions</span><span>WebRA</span></div>
+<section class="block" id="install" aria-labelledby="install-title">
+  <h2 class="label" id="install-title"><span aria-hidden="true">## </span>install</h2>
+  <div class="panel" data-installer>
+  <div class="tabs" role="group" aria-label="App to install"><button type="button" data-app="tagwell" data-shell="curl -fsSL https://sherin.dev/tagwell/install.sh | bash" data-windows="" data-note="Installs Tagwell.app for macOS 15 or later. &lt;a href=&quot;/tagwell/&quot;&gt;About Tagwell&lt;/a&gt;" aria-pressed="true">tagwell</button><button type="button" data-app="moire" data-shell="curl -fsSL https://sherin.dev/moire/install.sh | bash" data-windows="" data-note="Installs Moire.app for macOS 15 or later. &lt;a href=&quot;/moire/&quot;&gt;About Moire&lt;/a&gt;" aria-pressed="false">moire</button><button type="button" data-app="varve" data-shell="curl -fsSL https://sherin.dev/varve/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/varve/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/varve/&quot;&gt;About Varve&lt;/a&gt;" aria-pressed="false">varve</button><button type="button" data-app="chatkeep" data-shell="curl -fsSL https://sherin.dev/chatkeep/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/chatkeep/install.ps1|iex&quot;" data-note="macOS and Linux above, Windows below. &lt;a href=&quot;/chatkeep/&quot;&gt;About Chatkeep&lt;/a&gt;" aria-pressed="false">chatkeep</button><button type="button" data-app="tresso" data-shell="curl -fsSL https://sherin.dev/tresso/install.sh | bash" data-windows="powershell -c &quot;irm https://sherin.dev/tresso/install.ps1|iex&quot;" data-note="The desktop app: macOS and Linux above, Windows below. &lt;a href=&quot;/tresso/&quot;&gt;About Tresso&lt;/a&gt;" aria-pressed="false">tresso</button></div>
+  <div class="cmd" data-command="shell"><code><span class="ps1" aria-hidden="true">$ </span><span class="text">curl -fsSL https://sherin.dev/tagwell/install.sh | bash</span></code><button class="copy" type="button" hidden><span>copy</span></button></div>
+  <div class="cmd sub" data-command="windows" hidden><code><span class="ps1" aria-hidden="true">PS&gt; </span><span class="text"></span></code><button class="copy" type="button" hidden><span>copy</span></button></div>
+  <p class="note">Checks the SHA-256 against SHA256SUMS before it installs. <span data-install-note>Installs Tagwell.app for macOS 15 or later. <a href="/tagwell/">About Tagwell</a></span></p>
 </div>
+</section>
 
-<section class="tile downloads rise" id="downloads" aria-labelledby="downloads-title">
-  <h2 id="downloads-title" class="giant">Downloads</h2>
-  <details class="bar" open>
-    <summary><img src="/assets/icons/tagwell.png" alt="" width="24" height="24" loading="lazy"><span>Tagwell</span><span class="version" data-version="SherinBloemendaal/tagwell" hidden></span></summary>
-    <ul>
-      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.dmg">Tagwell.dmg</a></li>
-      <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/Tagwell.zip">Tagwell.zip</a></li>
-      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/tagwell/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/moire.png" alt="" width="24" height="24" loading="lazy"><span>Moire</span><span class="version" data-version="SherinBloemendaal/moire" hidden></span></summary>
-    <ul>
-      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.dmg">Moire.dmg</a></li>
-      <li><span>The app on its own</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/Moire.zip">Moire.zip</a></li>
-      <li><span>Checksums</span><a href="https://github.com/SherinBloemendaal/moire/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/varve.png" alt="" width="24" height="24" loading="lazy"><span>Varve</span><span class="version" data-version="getvarve/varve" hidden></span></summary>
-    <ul>
-      <li><span>Mac, Apple Silicon</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-arm64.dmg">varve-macos-arm64.dmg</a></li>
-      <li><span>Mac, Intel</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-macos-x64.dmg">varve-macos-x64.dmg</a></li>
-      <li><span>Windows installer</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64-setup.exe">varve-windows-x64-setup.exe</a></li>
-      <li><span>Windows, for administrators</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-windows-x64.msi">varve-windows-x64.msi</a></li>
-      <li><span>Linux x64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.AppImage">varve-linux-x64.AppImage</a></li>
-      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-x64.deb">varve-linux-x64.deb</a></li>
-      <li><span>Linux arm64, AppImage</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.AppImage">varve-linux-arm64.AppImage</a></li>
-      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/getvarve/varve/releases/latest/download/varve-linux-arm64.deb">varve-linux-arm64.deb</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/chatkeep.png" alt="" width="24" height="24" loading="lazy"><span>Chatkeep</span><span class="version" data-version="SherinBloemendaal/chatkeep" hidden></span></summary>
-    <ul>
-      <li><span>Mac, Apple Silicon</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-apple-darwin.tar.gz">chatkeep-aarch64-apple-darwin.tar.gz</a></li>
-      <li><span>Mac, Intel</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-apple-darwin.tar.gz">chatkeep-x86_64-apple-darwin.tar.gz</a></li>
-      <li><span>Linux x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-unknown-linux-gnu.tar.gz">chatkeep-x86_64-unknown-linux-gnu.tar.gz</a></li>
-      <li><span>Linux arm64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-aarch64-unknown-linux-gnu.tar.gz">chatkeep-aarch64-unknown-linux-gnu.tar.gz</a></li>
-      <li><span>Windows x64</span><a href="https://github.com/SherinBloemendaal/chatkeep/releases/latest/download/chatkeep-x86_64-pc-windows-msvc.zip">chatkeep-x86_64-pc-windows-msvc.zip</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/shellops.png" alt="" width="24" height="24" loading="lazy"><span>ShellOps</span></summary>
-    <ul>
-      <li><span>Not released yet</span><a href="https://github.com/SherinBloemendaal/shellops-cli">Source on GitHub</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/tresso.png" alt="" width="24" height="24" loading="lazy"><span>Tresso</span><span class="version" data-version="gettresso/tresso" hidden></span></summary>
-    <ul>
-      <li><span>Mac, Apple Silicon and Intel</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-macos-universal.dmg">tresso-macos-universal.dmg</a></li>
-      <li><span>Windows installer</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64-setup.exe">tresso-windows-x64-setup.exe</a></li>
-      <li><span>Windows, for administrators</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-windows-x64.msi">tresso-windows-x64.msi</a></li>
-      <li><span>Linux x64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.AppImage">tresso-linux-x86_64.AppImage</a></li>
-      <li><span>Linux x64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-x86_64.deb">tresso-linux-x86_64.deb</a></li>
-      <li><span>Linux arm64, AppImage</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.AppImage">tresso-linux-aarch64.AppImage</a></li>
-      <li><span>Linux arm64, Debian and Ubuntu</span><a href="https://github.com/gettresso/tresso/releases/latest/download/tresso-linux-aarch64.deb">tresso-linux-aarch64.deb</a></li>
-      <li><span>Checksums</span><a href="https://github.com/gettresso/tresso/releases/latest/download/SHA256SUMS">SHA256SUMS</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/eb-sessions.png" alt="" width="24" height="24" loading="lazy"><span>EB Sessions</span></summary>
-    <ul>
-      <li><span>Not released yet</span><a href="/eb-sessions/">About EB Sessions</a></li>
-    </ul>
-  </details>
-  <details class="bar">
-    <summary><img src="/assets/icons/webra.png" alt="" width="24" height="24" loading="lazy"><span>WebRA</span></summary>
-    <ul>
-      <li><span>Plays in the browser</span><a href="https://webra.sherin.dev/">webra.sherin.dev</a></li>
-    </ul>
-  </details>
-</section>
-<section class="tile record written rise" aria-label="Written in">
-  <p class="small">Written in</p>
-  <dl>
-    <div><dt>Swift</dt><dd>Tagwell, Moire</dd></div>
-    <div><dt>Rust</dt><dd>Varve, Chatkeep, ShellOps, WebRA</dd></div>
-    <div><dt>TypeScript and Vue</dt><dd>Varve, Tresso</dd></div>
-    <div><dt>PHP and Go</dt><dd>Tresso</dd></div>
-    <div><dt>JavaScript</dt><dd>EB Sessions</dd></div>
-  </dl>
-</section>
-<section class="tile record licence rise" aria-label="Licence">
-  <p class="small">Licence</p>
-  <dl>
-    <div><dt>MIT</dt><dd>Tagwell, Moire, Chatkeep</dd></div>
-    <div><dt>Apache-2.0</dt><dd>Varve Community</dd></div>
-    <div><dt>AGPL-3.0</dt><dd>Tresso</dd></div>
-  </dl>
-</section>
-<section class="tile why rise" aria-label="Why these apps">
-  <p>Each app started as something I needed myself. They stay small on purpose, and most are open source, so you can read what an app does before you run it.</p>
+<section class="block" id="apps" aria-labelledby="apps-title">
+  <h2 class="label" id="apps-title"><span aria-hidden="true">## </span>apps</h2>
+  <div class="scroll" tabindex="0" role="region" aria-labelledby="apps-title" data-reveal>
+  <table class="apps">
+    <thead>
+      <tr><th scope="col">name</th><th scope="col">what it is</th><th scope="col">runs on</th><th scope="col">written in</th><th scope="col" class="end">status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><a href="/tagwell/">tagwell</a></th>
+        <td>MP3 tag editor</td>
+        <td class="dim">macOS</td>
+        <td class="dim">Swift</td>
+        <td class="end"><span class="status" data-version="SherinBloemendaal/tagwell">released</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/moire/">moire</a></th>
+        <td>Compare text, files and folders</td>
+        <td class="dim">macOS</td>
+        <td class="dim">Swift</td>
+        <td class="end"><span class="status" data-version="SherinBloemendaal/moire">released</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/varve/">varve</a></th>
+        <td>Database manager</td>
+        <td class="dim">macOS, Windows, Linux</td>
+        <td class="dim">Rust, Vue</td>
+        <td class="end"><span class="status" data-version="getvarve/varve">released</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/chatkeep/">chatkeep</a></th>
+        <td>Keeps AI chats with moved projects</td>
+        <td class="dim">Command line</td>
+        <td class="dim">Rust</td>
+        <td class="end"><span class="status" data-version="SherinBloemendaal/chatkeep">released</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/shellops/">shellops</a></th>
+        <td>Docker Compose and PHP from the shell</td>
+        <td class="dim">Command line</td>
+        <td class="dim">Rust</td>
+        <td class="end"><span class="status off">not yet</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/tresso/">tresso</a></th>
+        <td>Email client: do, hand over, know</td>
+        <td class="dim">Web, desktop, mobile</td>
+        <td class="dim">TypeScript, PHP, Go</td>
+        <td class="end"><span class="status" data-version="gettresso/tresso">released</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/eb-sessions/">eb-sessions</a></th>
+        <td>Chrome extension for e-Boekhouden</td>
+        <td class="dim">Chrome</td>
+        <td class="dim">TypeScript</td>
+        <td class="end"><span class="status off">not yet</span></td>
+      </tr>
+      <tr>
+        <th scope="row"><a href="/webra/">webra</a></th>
+        <td>Real-time strategy in the browser</td>
+        <td class="dim">Browser</td>
+        <td class="dim">Rust, WebAssembly</td>
+        <td class="end"><span class="status">playable</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 </section>
 </main>
-<footer class="board footer">
-  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
-  <div class="tile foot-apps">
-    <p class="small">The apps</p>
-    <ul>
-      <li><a href="/tagwell/">Tagwell</a></li>
-      <li><a href="/moire/">Moire</a></li>
-      <li><a href="/varve/">Varve</a></li>
-      <li><a href="/chatkeep/">Chatkeep</a></li>
-      <li><a href="/shellops/">ShellOps</a></li>
-      <li><a href="/tresso/">Tresso</a></li>
-      <li><a href="/eb-sessions/">EB Sessions</a></li>
-      <li><a href="/webra/">WebRA</a></li>
-    </ul>
-  </div>
-  <div class="tile foot-me">
-    <p class="small">Made by</p>
-    <p>Sherin Bloemendaal</p>
-    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
-  </div>
-  <div class="tile foot-end">
-    <p class="small">2026 · No cookies, no tracking</p>
-    <a class="button" href="#main">Back to the top</a>
-  </div>
+<footer class="foot">
+  <span>Sherin Bloemendaal</span>
+  <span>© 2026 · no cookies, no tracking · <a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></span>
 </footer>
+</div>
 </body>
 </html>

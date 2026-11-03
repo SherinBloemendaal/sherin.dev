@@ -1,105 +1,79 @@
-// sherin.dev: the install tile, copy buttons, latest release numbers and tile entrances.
+// sherin.dev: the typed prompt, install tabs, copy buttons, latest release numbers and reveals.
 // Every part is an enhancement: without this script the page shows the same content.
-
-document.documentElement.classList.add("js");
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// ---------- Install instrument ----------
+// Restarts a short fade by switching between two identical animations.
+function fade(el, a, b) {
+  const next = el.classList.contains(a) ? b : a;
+  el.classList.remove(a, b);
+  el.classList.add(next);
+}
 
-function setUpInstrument(root) {
+// ---------- Typed prompt ----------
+
+document.querySelectorAll("[data-type]").forEach((el) => {
+  if (reducedMotion) return;
+  const cursor = el.parentElement.querySelector(".cursor");
+  const text = el.textContent;
+  let typed = 0;
+  el.textContent = "";
+  const timer = setInterval(() => {
+    typed += 1;
+    el.textContent = text.slice(0, typed);
+    if (typed < text.length) return;
+    clearInterval(timer);
+    cursor?.classList.add("blink");
+  }, 35);
+});
+
+// ---------- Install tabs ----------
+
+document.querySelectorAll("[data-installer]").forEach((root) => {
   const buttons = [...root.querySelectorAll("[data-app]")];
-  const shell = root.querySelector("[data-command='shell'] pre");
+  const shell = root.querySelector("[data-command='shell'] .text");
   const windowsRow = root.querySelector("[data-command='windows']");
-  const windows = windowsRow?.querySelector("pre");
-  const note = root.querySelector(".note");
-  const stepList = root.querySelector(".steps");
-  let current = buttons.find((b) => b.getAttribute("aria-pressed") === "true")?.dataset.app ?? "tagwell";
-  let timer = null;
-
-  function show(app, animate) {
-    const button = buttons.find((b) => b.dataset.app === app);
-    if (!button) return;
-    const install = {
-      shell: button.dataset.shell,
-      windows: button.dataset.windows,
-      note: button.dataset.note,
-      steps: JSON.parse(button.dataset.steps ?? "[]"),
-    };
-    root.classList.replace(`c-${current}`, `c-${app}`);
-    current = app;
-    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.app === app)));
-    const apply = () => {
-      shell.textContent = install.shell;
-      if (windowsRow) {
-        windowsRow.hidden = !install.windows;
-        windows.textContent = install.windows ?? "";
-      }
-      note.innerHTML = install.note;
-      if (stepList) {
-        stepList.replaceChildren(
-          ...install.steps.map(([label, value]) => {
-            const item = document.createElement("li");
-            const name = document.createElement("span");
-            name.textContent = label;
-            item.append(name, value);
-            return item;
-          }),
-        );
-      }
-      shell.classList.remove("fading");
-      windows?.classList.remove("fading");
-    };
-    if (animate && !reducedMotion) {
-      shell.classList.add("fading");
-      windows?.classList.add("fading");
-      setTimeout(apply, 800);
-    } else {
-      apply();
-    }
-  }
-
-  // The commands change slowly on their own until the visitor picks one.
-  function cycle() {
-    stop();
-    if (reducedMotion || buttons.length < 2) return;
-    timer = setInterval(() => {
-      if (document.hidden) return;
-      const index = buttons.findIndex((b) => b.dataset.app === current);
-      show(buttons[(index + 1) % buttons.length].dataset.app, true);
-    }, 6000);
-  }
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
+  const windows = windowsRow?.querySelector(".text");
+  const note = root.querySelector("[data-install-note]");
 
   buttons.forEach((button) =>
     button.addEventListener("click", () => {
-      stop();
-      show(button.dataset.app, false);
+      if (button.getAttribute("aria-pressed") === "true") return;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+      shell.textContent = button.dataset.shell;
+      fade(shell, "swap-a", "swap-b");
+      if (windowsRow) {
+        windowsRow.hidden = !button.dataset.windows;
+        windows.textContent = button.dataset.windows;
+        fade(windows, "swap-a", "swap-b");
+      }
+      // The notes are written by scripts/build.py, so they are trusted markup.
+      if (note) note.innerHTML = button.dataset.note;
     }),
   );
-  root.addEventListener("pointerenter", stop);
-  root.addEventListener("focusin", stop);
-  cycle();
-}
-
-document.querySelectorAll("[data-instrument]").forEach(setUpInstrument);
+});
 
 // ---------- Copy buttons ----------
 
-document.querySelectorAll(".command .copy").forEach((button) => {
+document.querySelectorAll(".cmd .copy").forEach((button) => {
+  const label = button.querySelector("span");
+  let timer = null;
+  const say = (text) => {
+    if (label.textContent === text) return;
+    label.textContent = text;
+    fade(label, "lab-a", "lab-b");
+  };
   button.hidden = false;
   button.addEventListener("click", async () => {
-    const text = button.closest(".command").querySelector("pre").textContent;
+    const text = button.closest(".cmd").querySelector(".text").textContent;
     try {
       await navigator.clipboard.writeText(text);
-      button.textContent = "Copied";
+      say("copied ✓");
     } catch {
-      button.textContent = "Select and copy";
+      say("select and copy");
     }
-    setTimeout(() => (button.textContent = "Copy"), 1600);
+    clearTimeout(timer);
+    timer = setTimeout(() => say("copy"), 1500);
   });
 });
 
@@ -128,32 +102,27 @@ repos.forEach(async (repo) => {
   try {
     const tag = await latestVersion(repo);
     if (!tag) return;
-    versionSlots
-      .filter((slot) => slot.dataset.version === repo)
-      .forEach((slot) => {
-        slot.textContent = tag;
-        slot.hidden = false;
-      });
+    versionSlots.filter((slot) => slot.dataset.version === repo).forEach((slot) => (slot.textContent = tag));
   } catch {
-    // Offline or rate limited: the page reads fine without the numbers.
+    // Offline or rate limited: "released" stays, which is still true.
   }
 });
 
-// ---------- Entrances ----------
+// ---------- Reveals: the apps table and the installer output, once ----------
 
-const risers = [...document.querySelectorAll(".rise")];
-if (reducedMotion || !("IntersectionObserver" in window)) {
-  risers.forEach((el) => el.classList.add("in"));
-} else {
+if (!reducedMotion && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("in");
+        entry.target.classList.replace("will-reveal", "is-in");
         observer.unobserve(entry.target);
       });
     },
-    { rootMargin: "0px 0px -8% 0px" },
+    { threshold: 0.2 },
   );
-  risers.forEach((el) => observer.observe(el));
+  document.querySelectorAll("[data-reveal]").forEach((el) => {
+    el.classList.add("will-reveal");
+    observer.observe(el);
+  });
 }

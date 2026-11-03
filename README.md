@@ -18,11 +18,11 @@ Commit the changed files in `site/`. A push to `main` deploys them; the workflow
 
 | Path | What it holds |
 | --- | --- |
-| `site/` | Everything that is published: the pages, `assets/` (CSS, JavaScript, fonts, icons, app art) and `_headers`. |
+| `site/` | Everything that is published: the pages, `assets/` (CSS, JavaScript, fonts and the favicon) and `_headers`. |
 | `scripts/build.py` | Writes the pages in `site/`. |
 | `art/` | Drawings made for the site, as SVG: the ShellOps icon. |
 
-The app icons and illustrations in `site/assets` come from each app's own repository. The typeface is [Hanken Grotesk](https://fonts.google.com/specimen/Hanken+Grotesk) (SIL Open Font License), served from this site.
+The typefaces are [IBM Plex Sans](https://github.com/IBM/plex) for text and IBM Plex Mono for headings and commands (SIL Open Font License), the Latin subsets from [Fontsource](https://fontsource.org), served from this site.
 
 ## Deploying
 

@@ -9,105 +9,57 @@
 <meta property="og:title" content="WebRA: Real-time strategy in the browser">
 <meta property="og:description" content="A strategy game inspired by Command &amp; Conquer: Red Alert and the open-source OpenRA engine, written in Rust and WebAssembly with WebGPU graphics. Nothing to install.">
 <meta property="og:url" content="https://sherin.dev/webra/">
-<meta name="theme-color" content="#0b0c0e">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
-<div class="glow c-webra" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <a class="skip" href="#main">Skip to content</a>
-<main id="main" class="board">
-<header class="tile band c-webra rise" aria-label="WebRA">
-  <p aria-hidden="true">WebRA</p>
+<div class="wrap">
+<header class="top">
+  <p class="brand"><a href="/"><span class="accent">~/</span>sherin.dev</a><span class="crumb"><span aria-hidden="true"> / </span>webra</span></p>
+  <nav aria-label="Site">
+    <a href="/#apps">apps</a>
+  </nav>
 </header>
-<nav class="navrow" aria-label="Site">
-  <a class="tile navlink rise" href="/">All apps</a>
-  <a class="tile navlink rise" href="https://webra.sherin.dev/">Play</a>
-  <a class="tile navlink rise" href="#details">Details</a>
-  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal">GitHub</a>
-</nav>
-
-<section class="tile statement rise" aria-labelledby="title">
-  <img class="icon" src="/assets/icons/webra.png" alt="WebRA icon" width="128" height="128">
-  <h1 id="title">WebRA: strategy in a browser tab.</h1>
-  <p>A strategy game inspired by Command &amp; Conquer: Red Alert and the open-source OpenRA engine, written in Rust and WebAssembly with WebGPU graphics. Nothing to install.</p>
-  <p class="actions"><a class="button c-webra" href="https://webra.sherin.dev/">Play at webra.sherin.dev</a></p>
-  
+<main id="main">
+<section class="hero app">
+  <p class="meta"><span>Real-time strategy in the browser</span><span aria-hidden="true">·</span><span>Browser</span><span aria-hidden="true">·</span><span>Rust, WebAssembly</span></p>
+  <h1>WebRA</h1>
+  <p class="lead">A strategy game inspired by Command &amp; Conquer: Red Alert and the open-source OpenRA engine, written in Rust and WebAssembly with WebGPU graphics. Nothing to install.</p>
+  <p class="actions"><a class="button primary" href="https://webra.sherin.dev/">Play at webra.sherin.dev</a></p>
 </section>
 
-<div class="tile art-icon c-webra rise"><img src="/assets/icons/webra.png" alt="" width="256" height="256" loading="lazy"></div>
+<section class="block" id="points" aria-labelledby="points-title">
+  <h2 class="label" id="points-title"><span aria-hidden="true">## </span>what it does</h2>
+  <ul class="points">
+    <li><strong>Campaign.</strong> The Allied and Soviet missions with their maps, rules and scripts.</li>
+    <li><strong>Skirmish for 2 to 8 players,</strong> free for all or in teams, against AI that plays OpenRA&#x27;s own bots.</li>
+    <li><strong>Online multiplayer.</strong> Host a public or private game, with spectators, reconnecting and rematches.</li>
+    <li><strong>Replays,</strong> recorded for every game and kept in your account.</li>
+    <li><strong>Map editor,</strong> in the browser and on phones, and OpenRA maps can be imported.</li>
+  </ul>
+</section>
 
-<h2 class="sr-only" id="points">What it does</h2>
-<div class="tile point rise">
-  <p class="lead-line">Campaign.</p>
-  <p>The Allied and Soviet missions with their maps, rules and scripts.</p>
-</div>
-<div class="tile point rise">
-  <p class="lead-line">Skirmish for 2 to 8 players,</p>
-  <p>free for all or in teams, against AI that plays OpenRA&#x27;s own bots.</p>
-</div>
-<div class="tile point rise">
-  <p class="lead-line">Online multiplayer.</p>
-  <p>Host a public or private game, with spectators, reconnecting and rematches.</p>
-</div>
-<div class="tile point rise">
-  <p class="lead-line">Replays,</p>
-  <p>recorded for every game and kept in your account.</p>
-</div>
-<div class="tile point rise">
-  <p class="lead-line">Map editor,</p>
-  <p>in the browser and on phones, and OpenRA maps can be imported.</p>
-</div>
-
-
-<h2 class="sr-only" id="details">Details</h2>
-<div class="tile fact rise">
-  <p class="small">Plays in</p>
-  <p>A browser with WebGPU</p>
-</div>
-<div class="tile fact rise">
-  <p class="small">Account</p>
-  <p>Needed to play</p>
-</div>
-<div class="tile fact rise">
-  <p class="small">Written in</p>
-  <p>Rust and WebAssembly</p>
-</div>
-<div class="tile fact rise">
-  <p class="small">Source</p>
-  <p>Not public yet</p>
-</div>
-
-<div class="tile marquee one c-webra" aria-hidden="true">
-  <div class="track"><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span><span>WebRA</span></div>
-</div>
+<section class="block" id="details" aria-labelledby="details-title">
+  <h2 class="label" id="details-title"><span aria-hidden="true">## </span>facts</h2>
+  <dl class="facts">
+    <div><dt>Plays in</dt><dd>A browser with WebGPU</dd></div>
+    <div><dt>Account</dt><dd>Needed to play</dd></div>
+    <div><dt>Written in</dt><dd>Rust and WebAssembly</dd></div>
+    <div><dt>Source</dt><dd>Not public yet</dd></div>
+  </dl>
+</section>
 </main>
-<footer class="board footer">
-  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
-  <div class="tile foot-apps">
-    <p class="small">The apps</p>
-    <ul>
-      <li><a href="/tagwell/">Tagwell</a></li>
-      <li><a href="/moire/">Moire</a></li>
-      <li><a href="/varve/">Varve</a></li>
-      <li><a href="/chatkeep/">Chatkeep</a></li>
-      <li><a href="/shellops/">ShellOps</a></li>
-      <li><a href="/tresso/">Tresso</a></li>
-      <li><a href="/eb-sessions/">EB Sessions</a></li>
-      <li><a href="/webra/">WebRA</a></li>
-    </ul>
-  </div>
-  <div class="tile foot-me">
-    <p class="small">Made by</p>
-    <p>Sherin Bloemendaal</p>
-    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
-  </div>
-  <div class="tile foot-end">
-    <p class="small">2026 · No cookies, no tracking</p>
-    <a class="button" href="#main">Back to the top</a>
-  </div>
+<footer class="foot">
+  <a href="/">← all apps</a>
+  <span>© 2026 · no cookies, no tracking · <a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></span>
 </footer>
+</div>
 </body>
 </html>

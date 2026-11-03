@@ -9,55 +9,38 @@
 <meta property="og:title" content="Not found: sherin.dev">
 <meta property="og:description" content="This page does not exist.">
 <meta property="og:url" content="https://sherin.dev/404">
-<meta name="theme-color" content="#0b0c0e">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js" defer></script>
 </head>
 <body>
-<div class="glow" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <a class="skip" href="#main">Skip to content</a>
-<main id="main" class="board">
-<header class="tile band c-ink rise" aria-label="Not found">
-  <p aria-hidden="true">Not found</p>
+<div class="wrap">
+<header class="top">
+  <p class="brand"><a href="/"><span class="accent">~/</span>sherin.dev</a></p>
+  <nav aria-label="Site">
+    <a href="/#apps">apps</a>
+    <a href="/#install">install</a>
+    <a href="https://github.com/SherinBloemendaal">github</a>
+  </nav>
 </header>
-<nav class="navrow" aria-label="Site">
-  <a class="tile navlink rise" href="/">All apps</a>
-  <a class="tile navlink rise" href="/#install">Install</a>
-  <a class="tile navlink rise" href="/#downloads">Downloads</a>
-  <a class="tile navlink rise" href="https://github.com/SherinBloemendaal">GitHub</a>
-</nav>
-<section class="tile statement rise" aria-labelledby="title">
-  <h1 id="title">This page does not exist.</h1>
-  <p>It may have moved. Every app is on the front page.</p>
-  <p class="actions"><a class="button c-tagwell" href="/">All apps</a></p>
+<main id="main">
+<section class="hero">
+  <p class="prompt"><span class="sr-only"># 404</span><span aria-hidden="true"><span data-type># 404</span><span class="cursor">▍</span></span></p>
+  <h1>This page does not exist.</h1>
+  <p class="lead">It may have moved. Every app is on the front page.</p>
+  <p class="actions"><a class="button primary" href="/">All apps</a></p>
 </section>
 </main>
-<footer class="board footer">
-  <a class="tile mark" href="/" aria-label="sherin.dev, all apps"><span class="block c-tagwell h0">S</span><span class="block c-moire h1">H</span><span class="block c-varve h2">E</span><span class="block c-chatkeep h0">R</span><span class="block c-shellops h1">I</span><span class="block c-tresso h2">N</span></a>
-  <div class="tile foot-apps">
-    <p class="small">The apps</p>
-    <ul>
-      <li><a href="/tagwell/">Tagwell</a></li>
-      <li><a href="/moire/">Moire</a></li>
-      <li><a href="/varve/">Varve</a></li>
-      <li><a href="/chatkeep/">Chatkeep</a></li>
-      <li><a href="/shellops/">ShellOps</a></li>
-      <li><a href="/tresso/">Tresso</a></li>
-      <li><a href="/eb-sessions/">EB Sessions</a></li>
-      <li><a href="/webra/">WebRA</a></li>
-    </ul>
-  </div>
-  <div class="tile foot-me">
-    <p class="small">Made by</p>
-    <p>Sherin Bloemendaal</p>
-    <p><a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></p>
-  </div>
-  <div class="tile foot-end">
-    <p class="small">2026 · No cookies, no tracking</p>
-    <a class="button" href="#main">Back to the top</a>
-  </div>
+<footer class="foot">
+  <span>Sherin Bloemendaal</span>
+  <span>© 2026 · no cookies, no tracking · <a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></span>
 </footer>
+</div>
 </body>
 </html>

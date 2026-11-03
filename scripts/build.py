@@ -5,6 +5,7 @@ The output (site/index.html, site/404.html and one folder per app) is committed,
 Run it after changing an app:  python3 scripts/build.py
 """
 
+import hashlib
 from html import escape
 from pathlib import Path
 
@@ -297,6 +298,12 @@ def e(text: str) -> str:
     return escape(text, quote=True)
 
 
+def asset(name: str) -> str:
+    # The file's hash in the URL, so a changed stylesheet or script is never taken from an old cache.
+    digest = hashlib.sha256((SITE / "assets" / name).read_bytes()).hexdigest()[:10]
+    return f"/assets/{name}?v={digest}"
+
+
 DOWNLOAD_ICON = (
     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
     'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>'
@@ -333,8 +340,8 @@ def page(
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css">
-<script src="/assets/site.js" defer></script>
+<link rel="stylesheet" href="{asset('site.css')}">
+<script src="{asset('site.js')}" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

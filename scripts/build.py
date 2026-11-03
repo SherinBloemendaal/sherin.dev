@@ -93,7 +93,6 @@ APPS = [
         "kind": "Database manager",
         "where": "macOS, Windows, Linux",
         "repo": "getvarve/varve",
-        "site": "https://varve.app",
         "title": "Varve: calm database work.",
         "lead": "One desktop app for PostgreSQL, MySQL, MariaDB and Redis, careful around production: "
         "environment tags, read-only connections and a plan to review before every change.",

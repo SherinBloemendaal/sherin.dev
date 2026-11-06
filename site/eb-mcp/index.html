@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EB MCP: e-Boekhouden for AI clients</title>
+<meta name="description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.">
+<link rel="canonical" href="https://sherin.dev/eb-mcp/">
+<meta property="og:title" content="EB MCP: e-Boekhouden for AI clients">
+<meta property="og:description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.">
+<meta property="og:url" content="https://sherin.dev/eb-mcp/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=cb56541f57">
+<script src="/assets/site.js?v=1339a3792f" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="top">
+  <p class="brand"><a href="/"><span class="accent">~/</span>sherin.dev</a><span class="crumb"><span aria-hidden="true"> / </span>eb-mcp</span></p>
+  <nav aria-label="Site">
+    <a href="/#apps">apps</a>
+  </nav>
+</header>
+<main id="main">
+<section class="hero app">
+  <p class="meta"><span>e-Boekhouden for AI clients</span><span aria-hidden="true">·</span><span>macOS, Windows</span><span aria-hidden="true">·</span><span>Rust, TypeScript</span></p>
+  <h1>EB MCP</h1>
+  <p class="lead">A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.</p>
+  <p class="notice">Not released yet. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.</p>
+  <p class="actions"><a class="button primary" href="#points">What it does</a></p>
+</section>
+
+<section class="block" id="points" aria-labelledby="points-title">
+  <h2 class="label" id="points-title"><span aria-hidden="true">## </span>what it does</h2>
+  <ul class="points">
+    <li><strong>Signs in out of sight.</strong> You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden&#x27;s own login page in the background and asks for your two-step code in its own field.</li>
+    <li><strong>Read only, always.</strong> Twelve tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Nothing that books, saves or deletes.</li>
+    <li><strong>Local and locked down.</strong> The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit.</li>
+    <li><strong>See every call.</strong> A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic.</li>
+    <li><strong>One click to connect.</strong> Writes the entry into Claude&#x27;s or Cursor&#x27;s config after you saw exactly what changes, with a backup first.</li>
+  </ul>
+</section>
+
+<section class="block" id="details" aria-labelledby="details-title">
+  <h2 class="label" id="details-title"><span aria-hidden="true">## </span>facts</h2>
+  <dl class="facts">
+    <div><dt>Runs on</dt><dd>macOS (menu bar) and Windows (system tray)</dd></div>
+    <div><dt>Works with</dt><dd>e-Boekhouden.nl, Claude, Cursor and other MCP clients</dd></div>
+    <div><dt>Written in</dt><dd>Rust (Tauri) and TypeScript</dd></div>
+    <div><dt>Status</dt><dd>Not released yet</dd></div>
+  </dl>
+</section>
+</main>
+<footer class="foot">
+  <a href="/">← all apps</a>
+  <span>© 2026 · no cookies, no tracking · <a href="https://github.com/SherinBloemendaal">github.com/SherinBloemendaal</a></span>
+</footer>
+</div>
+</body>
+</html>

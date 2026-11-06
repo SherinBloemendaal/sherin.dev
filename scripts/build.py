@@ -245,6 +245,31 @@ APPS = [
         ],
     },
     {
+        "slug": "eb-mcp",
+        "name": "EB MCP",
+        "kind": "e-Boekhouden for AI clients",
+        "where": "macOS, Windows",
+        "lang": "Rust, TypeScript",
+        "title": "EB MCP: your bookkeeping, readable for AI.",
+        "lead": "A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients "
+        "read your administration through a local MCP server. Read only: it can never book, save or delete.",
+        "primary": ("What it does", "#points"),
+        "unreleased": "Not released yet. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.",
+        "points": [
+            ("Signs in out of sight.", "You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden's own login page in the background and asks for your two-step code in its own field."),
+            ("Read only, always.", "Twelve tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Nothing that books, saves or deletes."),
+            ("Local and locked down.", "The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit."),
+            ("See every call.", "A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic."),
+            ("One click to connect.", "Writes the entry into Claude's or Cursor's config after you saw exactly what changes, with a backup first."),
+        ],
+        "facts": [
+            ("Runs on", "macOS (menu bar) and Windows (system tray)"),
+            ("Works with", "e-Boekhouden.nl, Claude, Cursor and other MCP clients"),
+            ("Written in", "Rust (Tauri) and TypeScript"),
+            ("Status", "Not released yet"),
+        ],
+    },
+    {
         "slug": "webra",
         "name": "WebRA",
         "kind": "Real-time strategy in the browser",
@@ -464,7 +489,7 @@ def home() -> str:
 </section>"""
     return page(
         "Sherin Bloemendaal: apps",
-        "Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso, EB Sessions and WebRA, with downloads and one-line installs.",
+        "Apps by Sherin Bloemendaal: Tagwell, Moire, Varve, Chatkeep, ShellOps, Tresso, EB Sessions, EB MCP and WebRA, with downloads and one-line installs.",
         "/",
         body,
     )

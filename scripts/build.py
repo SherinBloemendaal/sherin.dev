@@ -19,6 +19,18 @@ def release(repo: str, name: str) -> str:
     return f"https://github.com/{repo}/releases/latest/download/{name}"
 
 
+def mac(app: str, kind: str = "mac") -> str:
+    """The Mac download of an app. Its DMG carries the version in its name, so no fixed file name
+    exists; the install Worker (the `dns` repository) redirects this path to the latest one."""
+    return f"/{app}/download/{kind}"
+
+
+# For a Mac app that is not signed with an Apple Developer ID: what a visitor meets after the download.
+MAC_FIRST_OPEN = (
+    "macOS asks once before it opens the app: choose Open Anyway in System Settings, Privacy & Security. "
+    "The app is not signed with an Apple Developer ID."
+)
+
 APPS = [
     {
         "slug": "tagwell",
@@ -30,7 +42,7 @@ APPS = [
         "title": "Tagwell: MP3 tags, nothing else.",
         "lead": "A small, native Mac app for editing the tags of one MP3 or hundreds at once. "
         "It writes only the fields you change; the audio and the rest of the tag stay exactly as they were.",
-        "primary": ("Download for Mac", release("SherinBloemendaal/tagwell", "Tagwell.dmg")),
+        "primary": ("Download for Mac", mac("tagwell")),
         "install": "tagwell",
         "points": [
             ("Only what you changed is written.", "MusicBrainz IDs, iTunes data, lyrics and ratings stay byte for byte, and the tag keeps its ID3 version."),
@@ -41,7 +53,7 @@ APPS = [
             ("Safe saves.", "Files are written in the background with a progress window, next to the original and swapped in, so a failed save never leaves a broken MP3."),
         ],
         "downloads": [
-            ("Mac, Apple Silicon and Intel", "Tagwell.dmg", release("SherinBloemendaal/tagwell", "Tagwell.dmg")),
+            ("Mac, Apple Silicon and Intel", "Tagwell for Mac (.dmg)", mac("tagwell")),
             ("The app on its own", "Tagwell.zip", release("SherinBloemendaal/tagwell", "Tagwell.zip")),
             ("Checksums", "SHA256SUMS", release("SherinBloemendaal/tagwell", "SHA256SUMS")),
         ],
@@ -62,7 +74,7 @@ APPS = [
         "title": "Moire shows what changed.",
         "lead": "A native Mac app for comparing text, files and folders. Lines line up across both sides, "
         "and the exact words that changed are marked.",
-        "primary": ("Download for Mac", release("SherinBloemendaal/moire", "Moire.dmg")),
+        "primary": ("Download for Mac", mac("moire")),
         "install": "moire",
         "points": [
             ("Side by side or unified.", "Changed lines sit next to their new version, with the changed words marked."),
@@ -73,7 +85,7 @@ APPS = [
             ("Fast on big files.", "Myers' algorithm in linear space, the idea behind git diff, off the main thread."),
         ],
         "downloads": [
-            ("Mac, Apple Silicon and Intel", "Moire.dmg", release("SherinBloemendaal/moire", "Moire.dmg")),
+            ("Mac, Apple Silicon and Intel", "Moire for Mac (.dmg)", mac("moire")),
             ("The app on its own", "Moire.zip", release("SherinBloemendaal/moire", "Moire.zip")),
             ("Checksums", "SHA256SUMS", release("SherinBloemendaal/moire", "SHA256SUMS")),
         ],
@@ -105,8 +117,8 @@ APPS = [
             ("Fast where it counts.", "A Rust core with native drivers, cancellable queries and a grid that stays smooth on large results."),
         ],
         "downloads": [
-            ("Mac, Apple Silicon", "varve-macos-arm64.dmg", release("getvarve/varve", "varve-macos-arm64.dmg")),
-            ("Mac, Intel", "varve-macos-x64.dmg", release("getvarve/varve", "varve-macos-x64.dmg")),
+            ("Mac, Apple Silicon", "Varve for Mac, Apple Silicon (.dmg)", mac("varve", "mac-arm64")),
+            ("Mac, Intel", "Varve for Mac, Intel (.dmg)", mac("varve", "mac-x64")),
             ("Windows installer", "varve-windows-x64-setup.exe", release("getvarve/varve", "varve-windows-x64-setup.exe")),
             ("Windows, for administrators", "varve-windows-x64.msi", release("getvarve/varve", "varve-windows-x64.msi")),
             ("Linux x64, AppImage", "varve-linux-x64.AppImage", release("getvarve/varve", "varve-linux-x64.AppImage")),
@@ -133,6 +145,7 @@ APPS = [
         "and its chat history comes along to the new place.",
         "primary": ("Install", "#install"),
         "install": "chatkeep",
+        "download_note": MAC_FIRST_OPEN,
         "points": [
             ("Chats follow the folder.", "chatkeep mv rewrites the local references, so the history reattaches at the new path."),
             ("One command, both tools.", "List, move, copy, split, combine, export and import chats for Cursor and Claude Code alike."),
@@ -141,8 +154,9 @@ APPS = [
             ("Local only.", "It never contacts the servers of Cursor or Anthropic."),
         ],
         "downloads": [
-            ("Mac, Apple Silicon", "chatkeep-aarch64-apple-darwin.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-aarch64-apple-darwin.tar.gz")),
-            ("Mac, Intel", "chatkeep-x86_64-apple-darwin.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-x86_64-apple-darwin.tar.gz")),
+            ("Mac app, Apple Silicon and Intel", "Chatkeep for Mac (.dmg)", mac("chatkeep")),
+            ("Command line, Mac, Apple Silicon", "chatkeep-aarch64-apple-darwin.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-aarch64-apple-darwin.tar.gz")),
+            ("Command line, Mac, Intel", "chatkeep-x86_64-apple-darwin.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-x86_64-apple-darwin.tar.gz")),
             ("Linux x64", "chatkeep-x86_64-unknown-linux-gnu.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-x86_64-unknown-linux-gnu.tar.gz")),
             ("Linux arm64", "chatkeep-aarch64-unknown-linux-gnu.tar.gz", release("SherinBloemendaal/chatkeep", "chatkeep-aarch64-unknown-linux-gnu.tar.gz")),
             ("Windows x64", "chatkeep-x86_64-pc-windows-msvc.zip", release("SherinBloemendaal/chatkeep", "chatkeep-x86_64-pc-windows-msvc.zip")),
@@ -202,7 +216,7 @@ APPS = [
             ("Everywhere.", "Web, desktop and mobile, with notifications only for mail that needs you."),
         ],
         "downloads": [
-            ("Mac, Apple Silicon and Intel", "tresso-macos-universal.dmg", release("gettresso/tresso", "tresso-macos-universal.dmg")),
+            ("Mac, Apple Silicon and Intel", "Tresso for Mac (.dmg)", mac("tresso")),
             ("Windows installer", "tresso-windows-x64-setup.exe", release("gettresso/tresso", "tresso-windows-x64-setup.exe")),
             ("Windows, for administrators", "tresso-windows-x64.msi", release("gettresso/tresso", "tresso-windows-x64.msi")),
             ("Linux x64, AppImage", "tresso-linux-x86_64.AppImage", release("gettresso/tresso", "tresso-linux-x86_64.AppImage")),
@@ -251,13 +265,15 @@ APPS = [
         "where": "macOS, Windows",
         "lang": "Rust, TypeScript",
         "title": "EB MCP: your bookkeeping, readable for AI.",
+        "repo": "SherinBloemendaal/eboekhouden-mcp",
         "lead": "A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients "
-        "read your administration through a local MCP server. Read only: it can never book, save or delete.",
-        "primary": ("What it does", "#points"),
-        "unreleased": "Not released yet. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.",
+        "work with your administration through a local MCP server. Read only, unless you turn writing on for an account.",
+        "primary": ("Download for Mac", mac("eb-mcp")),
+        "notice": "An unofficial tool, not made by or affiliated with e-Boekhouden.nl.",
+        "download_note": MAC_FIRST_OPEN,
         "points": [
-            ("Signs in out of sight.", "You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden's own login page in the background and asks for your two-step code in its own field."),
-            ("Read only, always.", "Twelve tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Nothing that books, saves or deletes."),
+            ("Signs in out of sight.", "You add an account once, with the password in 1Password or your system's password store. EB MCP fills e-Boekhouden's own login page in the background. Accounts with two-step verification are not supported yet."),
+            ("Read only, until you say otherwise.", "Tools for relations, entries, invoices, quotes, subscriptions, products, hours, the ledger, fixed assets, VAT returns and the digital archive. Writing is off for every account until you turn it on, per account: with your approval for each change, or without. Deleting, e-mailing and anything else that cannot be undone always asks. It never files or pays a VAT return."),
             ("Local and locked down.", "The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit."),
             ("See every call.", "A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic."),
             ("One click to connect.", "Writes the entry into Claude's or Cursor's config after you saw exactly what changes, with a backup first."),
@@ -266,7 +282,12 @@ APPS = [
             ("Runs on", "macOS (menu bar) and Windows (system tray)"),
             ("Works with", "e-Boekhouden.nl, Claude, Cursor and other MCP clients"),
             ("Written in", "Rust (Tauri) and TypeScript"),
-            ("Status", "Not released yet"),
+        ],
+        "downloads": [
+            ("Mac, Apple Silicon and Intel", "EB MCP for Mac (.dmg)", mac("eb-mcp")),
+            ("Windows installer", "eb-mcp-windows-x64-setup.exe", release("SherinBloemendaal/eboekhouden-mcp", "eb-mcp-windows-x64-setup.exe")),
+            ("Windows, for administrators", "eb-mcp-windows-x64.msi", release("SherinBloemendaal/eboekhouden-mcp", "eb-mcp-windows-x64.msi")),
+            ("Checksums", "SHA256SUMS", release("SherinBloemendaal/eboekhouden-mcp", "SHA256SUMS")),
         ],
     },
     {
@@ -517,7 +538,9 @@ def app_page(a: dict) -> str:
     actions = [f'<a class="button primary" href="{e(primary_url)}">{icon}{e(primary_label)}</a>']
     if source and primary_url != source:
         actions.append(f'<a class="button" href="{e(source)}">View source</a>')
-    unreleased = f'\n  <p class="notice">{e(a["unreleased"])}</p>' if a.get("unreleased") else ""
+    # A released app can carry a notice too, such as a disclaimer.
+    note = a.get("unreleased") or a.get("notice")
+    unreleased = f'\n  <p class="notice">{e(note)}</p>' if note else ""
 
     install = ""
     if a.get("install"):
@@ -536,6 +559,7 @@ def app_page(a: dict) -> str:
             f'      <tr><td>{e(text)}</td><td class="end"><a class="file" href="{e(url)}">{e(file)}</a></td></tr>'
             for text, file, url in a["downloads"]
         )
+        download_note = f'\n  <p class="note">{e(a["download_note"])}</p>' if a.get("download_note") else ""
         downloads = f"""
 <section class="block" id="downloads" aria-labelledby="downloads-title">
   {label("downloads", "downloads-title")}
@@ -545,7 +569,7 @@ def app_page(a: dict) -> str:
 {rows}
     </tbody>
   </table>
-  </div>
+  </div>{download_note}
 </section>
 """
 

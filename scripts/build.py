@@ -25,6 +25,12 @@ def mac(app: str, kind: str = "mac") -> str:
     return f"/{app}/download/{kind}"
 
 
+# For a Mac app that is not signed with an Apple Developer ID: what a visitor meets after the download.
+MAC_FIRST_OPEN = (
+    "macOS asks once before it opens the app: choose Open Anyway in System Settings, Privacy & Security. "
+    "The app is not signed with an Apple Developer ID."
+)
+
 APPS = [
     {
         "slug": "tagwell",
@@ -139,6 +145,7 @@ APPS = [
         "and its chat history comes along to the new place.",
         "primary": ("Install", "#install"),
         "install": "chatkeep",
+        "download_note": MAC_FIRST_OPEN,
         "points": [
             ("Chats follow the folder.", "chatkeep mv rewrites the local references, so the history reattaches at the new path."),
             ("One command, both tools.", "List, move, copy, split, combine, export and import chats for Cursor and Claude Code alike."),
@@ -263,9 +270,10 @@ APPS = [
         "work with your administration through a local MCP server. Read only, unless you turn writing on for an account.",
         "primary": ("Download for Mac", mac("eb-mcp")),
         "notice": "An unofficial tool, not made by or affiliated with e-Boekhouden.nl.",
+        "download_note": MAC_FIRST_OPEN,
         "points": [
-            ("Signs in out of sight.", "You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden's own login page in the background and asks for your two-step code in its own field."),
-            ("Read only, until you say otherwise.", "Tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Writing is off for every account until you turn it on, and can wait for your approval per change."),
+            ("Signs in out of sight.", "You add an account once, with the password in 1Password or your system's password store. EB MCP fills e-Boekhouden's own login page in the background. Accounts with two-step verification are not supported yet."),
+            ("Read only, until you say otherwise.", "Tools for relations, entries, invoices, quotes, subscriptions, products, hours, the ledger, fixed assets, VAT returns and the digital archive. Writing is off for every account until you turn it on, per account: with your approval for each change, or without. Deleting, e-mailing and anything else that cannot be undone always asks. It never files or pays a VAT return."),
             ("Local and locked down.", "The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit."),
             ("See every call.", "A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic."),
             ("One click to connect.", "Writes the entry into Claude's or Cursor's config after you saw exactly what changes, with a backup first."),
@@ -551,6 +559,7 @@ def app_page(a: dict) -> str:
             f'      <tr><td>{e(text)}</td><td class="end"><a class="file" href="{e(url)}">{e(file)}</a></td></tr>'
             for text, file, url in a["downloads"]
         )
+        download_note = f'\n  <p class="note">{e(a["download_note"])}</p>' if a.get("download_note") else ""
         downloads = f"""
 <section class="block" id="downloads" aria-labelledby="downloads-title">
   {label("downloads", "downloads-title")}
@@ -560,7 +569,7 @@ def app_page(a: dict) -> str:
 {rows}
     </tbody>
   </table>
-  </div>
+  </div>{download_note}
 </section>
 """
 

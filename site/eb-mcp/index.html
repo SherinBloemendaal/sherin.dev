@@ -40,8 +40,8 @@
 <section class="block" id="points" aria-labelledby="points-title">
   <h2 class="label" id="points-title"><span aria-hidden="true">## </span>what it does</h2>
   <ul class="points">
-    <li><strong>Signs in out of sight.</strong> You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden&#x27;s own login page in the background and asks for your two-step code in its own field.</li>
-    <li><strong>Read only, until you say otherwise.</strong> Tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Writing is off for every account until you turn it on, and can wait for your approval per change.</li>
+    <li><strong>Signs in out of sight.</strong> You add an account once, with the password in 1Password or your system&#x27;s password store. EB MCP fills e-Boekhouden&#x27;s own login page in the background. Accounts with two-step verification are not supported yet.</li>
+    <li><strong>Read only, until you say otherwise.</strong> Tools for relations, entries, invoices, quotes, subscriptions, products, hours, the ledger, fixed assets, VAT returns and the digital archive. Writing is off for every account until you turn it on, per account: with your approval for each change, or without. Deleting, e-mailing and anything else that cannot be undone always asks. It never files or pays a VAT return.</li>
     <li><strong>Local and locked down.</strong> The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit.</li>
     <li><strong>See every call.</strong> A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic.</li>
     <li><strong>One click to connect.</strong> Writes the entry into Claude&#x27;s or Cursor&#x27;s config after you saw exactly what changes, with a backup first.</li>
@@ -60,6 +60,7 @@
     </tbody>
   </table>
   </div>
+  <p class="note">macOS asks once before it opens the app: choose Open Anyway in System Settings, Privacy &amp; Security. The app is not signed with an Apple Developer ID.</p>
 </section>
 
 <section class="block" id="details" aria-labelledby="details-title">

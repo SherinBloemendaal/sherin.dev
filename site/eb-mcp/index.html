@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EB MCP: e-Boekhouden for AI clients</title>
-<meta name="description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.">
+<meta name="description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients work with your administration through a local MCP server. Read only, unless you turn writing on for an account.">
 <link rel="canonical" href="https://sherin.dev/eb-mcp/">
 <meta property="og:title" content="EB MCP: e-Boekhouden for AI clients">
-<meta property="og:description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.">
+<meta property="og:description" content="A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients work with your administration through a local MCP server. Read only, unless you turn writing on for an account.">
 <meta property="og:url" content="https://sherin.dev/eb-mcp/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
@@ -25,26 +25,41 @@
   <p class="brand"><a href="/"><span class="accent">~/</span>sherin.dev</a><span class="crumb"><span aria-hidden="true"> / </span>eb-mcp</span></p>
   <nav aria-label="Site">
     <a href="/#apps">apps</a>
+    <a href="https://github.com/SherinBloemendaal/eboekhouden-mcp">source</a>
   </nav>
 </header>
 <main id="main">
 <section class="hero app">
   <p class="meta"><span>e-Boekhouden for AI clients</span><span aria-hidden="true">·</span><span>macOS, Windows</span><span aria-hidden="true">·</span><span>Rust, TypeScript</span></p>
   <h1>EB MCP</h1>
-  <p class="lead">A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients read your administration through a local MCP server. Read only: it can never book, save or delete.</p>
-  <p class="notice">Not released yet. An unofficial tool, not made by or affiliated with e-Boekhouden.nl.</p>
-  <p class="actions"><a class="button primary" href="#points">What it does</a></p>
+  <p class="lead">A menu-bar app that signs in to the Dutch bookkeeping app e-Boekhouden.nl and lets Claude, Cursor and other AI clients work with your administration through a local MCP server. Read only, unless you turn writing on for an account.</p>
+  <p class="notice">An unofficial tool, not made by or affiliated with e-Boekhouden.nl.</p>
+  <p class="actions"><a class="button primary" href="/eb-mcp/download/mac"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Download for Mac</a><a class="button" href="https://github.com/SherinBloemendaal/eboekhouden-mcp">View source</a></p>
 </section>
 
 <section class="block" id="points" aria-labelledby="points-title">
   <h2 class="label" id="points-title"><span aria-hidden="true">## </span>what it does</h2>
   <ul class="points">
     <li><strong>Signs in out of sight.</strong> You add an account once, with the password in 1Password or your Keychain. EB MCP fills e-Boekhouden&#x27;s own login page in the background and asks for your two-step code in its own field.</li>
-    <li><strong>Read only, always.</strong> Twelve tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Nothing that books, saves or deletes.</li>
+    <li><strong>Read only, until you say otherwise.</strong> Tools for relations, entries, open items, the ledger, balance sheet, profit and loss, VAT, hours and the digital archive. Writing is off for every account until you turn it on, and can wait for your approval per change.</li>
     <li><strong>Local and locked down.</strong> The server listens on 127.0.0.1 only, behind a token, and refuses any website. Sessions live in memory and end when you quit.</li>
     <li><strong>See every call.</strong> A request log shows each AI question next to the e-Boekhouden calls it caused, with cookies and tokens masked, and a dashboard of the traffic.</li>
     <li><strong>One click to connect.</strong> Writes the entry into Claude&#x27;s or Cursor&#x27;s config after you saw exactly what changes, with a backup first.</li>
   </ul>
+</section>
+
+<section class="block" id="downloads" aria-labelledby="downloads-title">
+  <h2 class="label" id="downloads-title"><span aria-hidden="true">## </span>downloads</h2>
+  <div class="scroll" tabindex="0" role="region" aria-labelledby="downloads-title">
+  <table class="files">
+    <tbody>
+      <tr><td>Mac, Apple Silicon and Intel</td><td class="end"><a class="file" href="/eb-mcp/download/mac">EB MCP for Mac (.dmg)</a></td></tr>
+      <tr><td>Windows installer</td><td class="end"><a class="file" href="https://github.com/SherinBloemendaal/eboekhouden-mcp/releases/latest/download/eb-mcp-windows-x64-setup.exe">eb-mcp-windows-x64-setup.exe</a></td></tr>
+      <tr><td>Windows, for administrators</td><td class="end"><a class="file" href="https://github.com/SherinBloemendaal/eboekhouden-mcp/releases/latest/download/eb-mcp-windows-x64.msi">eb-mcp-windows-x64.msi</a></td></tr>
+      <tr><td>Checksums</td><td class="end"><a class="file" href="https://github.com/SherinBloemendaal/eboekhouden-mcp/releases/latest/download/SHA256SUMS">SHA256SUMS</a></td></tr>
+    </tbody>
+  </table>
+  </div>
 </section>
 
 <section class="block" id="details" aria-labelledby="details-title">
@@ -53,7 +68,7 @@
     <div><dt>Runs on</dt><dd>macOS (menu bar) and Windows (system tray)</dd></div>
     <div><dt>Works with</dt><dd>e-Boekhouden.nl, Claude, Cursor and other MCP clients</dd></div>
     <div><dt>Written in</dt><dd>Rust (Tauri) and TypeScript</dd></div>
-    <div><dt>Status</dt><dd>Not released yet</dd></div>
+    <div><dt>Source</dt><dd><a href="https://github.com/SherinBloemendaal/eboekhouden-mcp">github.com/SherinBloemendaal/eboekhouden-mcp</a></dd></div>
   </dl>
 </section>
 </main>
